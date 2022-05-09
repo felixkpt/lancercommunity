@@ -54,7 +54,7 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'vhttp://lancercommunity.com'),
+    'url' => env('APP_URL', 'http://lancercommunity.com'),
 
     'asset_url' => env('ASSET_URL', 'http://lancercommunity.com/public'),
 

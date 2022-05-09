@@ -33,7 +33,7 @@ return [
 
     'google' => [
         'client_id' => '', //USE FROM Google DEVELOPER ACCOUNT
-        'client_secret' => '', //USE FROM Google DEVELOPER ACCOUNT
+        'client_secret' => 'key', //USE FROM Google DEVELOPER ACCOUNT
         'redirect' => 'http://localhost/mbti-project/google/callback/'
     ],
 
