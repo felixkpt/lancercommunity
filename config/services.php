@@ -32,8 +32,8 @@ return [
     ],
 
     'google' => [
-        'client_id' => '699921945088-3c7ocf22tmrqsoj17asqdv023rap53jt.apps.googleusercontent.com', //USE FROM Google DEVELOPER ACCOUNT
-        'client_secret' => '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', //USE FROM Google DEVELOPER ACCOUNT
+        'client_id' => '', //USE FROM Google DEVELOPER ACCOUNT
+        'client_secret' => '', //USE FROM Google DEVELOPER ACCOUNT
         'redirect' => 'http://localhost/mbti-project/google/callback/'
     ],
 

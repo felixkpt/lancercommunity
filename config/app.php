@@ -54,9 +54,9 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'https://mbti.onlineserviceslab.com'),
+    'url' => env('APP_URL', 'vhttp://lancercommunity.com'),
 
-    'asset_url' => env('ASSET_URL', 'https://mbti.onlineserviceslab.com/public'),
+    'asset_url' => env('ASSET_URL', 'http://lancercommunity.com/public'),
 
     /*
     |--------------------------------------------------------------------------
