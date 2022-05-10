@@ -13,9 +13,14 @@ class HomeController extends Controller
      * @return Response
      */
     public function index() {
-        $id = Option::where('name', 'show_in_homepage')->first()->value;
-        $post = Post::where('id', $id)->first();
-        $title = $post->title ?? 'Welcome Home!';
+        $option = Option::where('name', 'show_in_homepage')->first();
+        
+        $title = 'Welcome Home!';
+        if ($option) {
+            $post = Post::where('id', $option->id)->first();
+            $title = $post->title ?? $title;
+        }
+
         $data = ['title' => $title, 'description' => null, 'post' => $post];
         return view('home', $data);
     }
