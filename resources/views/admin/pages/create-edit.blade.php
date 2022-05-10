@@ -3,7 +3,7 @@
     <?php 
     use App\Models\Option;
     $show_in_homepage = false;
-    if (is_object($post)) {
+    if (isset($post)) {
         $option = Option::where('name', 'show_in_homepage')->first();
         if ($option && isset($post) && $post->id == $option->value) {
             $show_in_homepage = true;
