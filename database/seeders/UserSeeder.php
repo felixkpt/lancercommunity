@@ -18,7 +18,7 @@ class UserSeeder extends Seeder
     public function run()
     {
     
-        $counts = 500;
+        $counts = 10;
         for($i=0; $i<$counts; $i++) {
                 // sleep(2);
             $person = file_get_contents('https://randomuser.me/api');
