@@ -1,5 +1,16 @@
 @include('/components/Trumbowyg-editor')
 <div class="flex flex-wrap w-full justify-center m-1">
+    <?php 
+    use App\Models\Option;
+    $show_in_homepage = false;
+    if (is_object($post)) {
+        $option = Option::where('name', 'show_in_homepage')->first();
+        if ($option && $post->id == $option->value) {
+            $show_in_homepage = true;
+        }
+    }    
+        
+    ?>
     <div class="flex flex-col w-4/5 bg-white shadow-lg p-1">
         <form action="{{ route($route, ['id' => @$post->id]) }}" method="post" class="w-full">
             @csrf
@@ -7,7 +18,7 @@
             <input type="hidden" name="redirect" value="{{ url()->previous() }}">
             <input type="hidden" name="id" value="{{ @$post->id }}">
             <div class="w-full mb-4">
-                <input type="checkbox" <?php if (isset($post) && $post->id == App\Models\Option::where('name', 'show_in_homepage')->first()->value) echo 'checked'; ?> class="m-1" name="show_in_homepage" id="use"><label for="use">Show in homepage</label>
+                <input type="checkbox" <?php if($show_in_homepage) echo 'checked'; ?> class="m-1" name="show_in_homepage" id="use"><label for="use">Show in homepage</label>
             </div>
             <div class="mb-4 w-full">
                 <label for="title">Title </label>
