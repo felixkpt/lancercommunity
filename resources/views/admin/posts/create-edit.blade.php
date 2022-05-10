@@ -1,11 +1,11 @@
 @include('/components/Trumbowyg-editor')
 <div class="flex flex-wrap w-full justify-center m-1">
     <div class="flex w-4/5 bg-white shadow-lg p-1">
-        <form action="{{ route($route, ['id' => $post ?? $post->id]) }}" method="post" class="w-full" enctype="multipart/form-data">
+        <form action="{{ route($route, ['id' => isset($post) ?? $post->id]) }}" method="post" class="w-full" enctype="multipart/form-data">
             @csrf
             <input type="hidden" name="_method" value="{{ $method }}">
             <input type="hidden" name="redirect" value="{{ url()->previous() }}">
-            <input type="hidden" name="id" value="{{ $post ?? $post->id }}">
+            <input type="hidden" name="id" value="{{ isset($post) ?? $post->id }}">
             <div class="mb-4 w-full">
                 <label for="company_name">Company name</label>
                 <input type="text" id="company_name" class="w-full" name="company_name" value="{{ old('company_name') ?: @$post->company_name }}">
