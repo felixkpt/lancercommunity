@@ -17,7 +17,6 @@ class UserFactory extends Factory
      */
     public function definition()
     {
-        DB::table('posts')->truncate();
 
         return [
             'name' => $name = $this->faker->name(),
