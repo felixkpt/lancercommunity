@@ -16,6 +16,7 @@ class HomeController extends Controller
         $option = Option::where('name', 'show_in_homepage')->first();
         
         $title = 'Welcome Home!';
+        $post = null;
         if ($option) {
             $post = Post::where('id', $option->id)->first();
             $title = $post->title ?? $title;
