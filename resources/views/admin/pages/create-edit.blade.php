@@ -5,7 +5,7 @@
     $show_in_homepage = false;
     if (is_object($post)) {
         $option = Option::where('name', 'show_in_homepage')->first();
-        if ($option && $post && $post->id == $option->value) {
+        if ($option && isset($post) && $post->id == $option->value) {
             $show_in_homepage = true;
         }
     }
