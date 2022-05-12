@@ -1,5 +1,5 @@
 @include('/admin/templates/header')    
-<div class="flex flex-col px-3 overflow-x-hidden">
+<div class="flex flex-col px-3">
 
 <div class="flex w-full">
     <div class="w-full margin-tb">

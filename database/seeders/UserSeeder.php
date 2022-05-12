@@ -15,10 +15,9 @@ class UserSeeder extends Seeder
      *
      * @return void
      */
-    public function run()
+    public function run($counts = 20)
     {
     
-        $counts = 10;
         for($i=0; $i<$counts; $i++) {
                 // sleep(2);
             $person = file_get_contents('https://randomuser.me/api');
@@ -28,7 +27,6 @@ class UserSeeder extends Seeder
 
                 $first_name = $person->name->first;
                 $last_name = $person->name->last;
-                $slug = Str::slug($first_name.' '.$last_name, '-');
                 $email = $person->email;
                 $image = $person->picture->large;
 

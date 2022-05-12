@@ -6,7 +6,7 @@ $map = ['I' => 'Introverted', 'E' => 'Extroverted', 'S' => 'Sensing', 'N' => 'iN
     <div class="flex w-full justify-center p-1">
         <div class="w-56 h-44 md:w-64 md:h-48 bg-gray-200 overflow-hidden postition-relative">
             <a href="{{ url('typologies/'.$personality->slug) }}">
-                <img class="rounded img-fadein" style="height: 100%;width:100%" src="{{ asset($personality->featured_image) }}" alt="ISFP">
+                <img class="rounded img-fadein" style="height: 100%;width:100%" src="{{ asset($personality->image) }}" alt="ISFP">
                 <div style="position: absolute;bottom:3px;">
                     <div class="flex flex-wrap w-full overflow-hidden">
                         <blockquote class="flex w-64">

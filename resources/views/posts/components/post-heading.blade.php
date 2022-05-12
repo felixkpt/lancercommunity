@@ -1,36 +1,17 @@
 <div class="col-md-2">
-    <img src="{{ asset('').$post->featured_image }}" alt="{{ $post->company_name }} logo" width="100%">
+    <img class="rounded-lg" src="{{ asset('').$post->image }}" alt="{{ $post->company_name }} logo" width="100%">
 </div>
 <div class="col-md-7">
     <h4 class="mb-1">{{ $post->company_name }}</h4>
     <p class="mb-0">
-        <?php $ratings = range(1,10);
-        $arr = json_decode(json_encode($post->reviews), true); 
-        $reviews = array_reduce($arr, function($out, $curr) {
-                if ($curr['rating'] > 0) {
-                    $out ++;
-                }
-                return $out;
-        }, 0);
-        
-        $ct = count($post->reviews); $total = 0; 
-        foreach($post->reviews as $review) { $total +=$review->rating; } 
-        $av = $av_echo = 0;
-        if ($total > 0) {
-            $av = $total/$reviews;
-            
-            $parts = explode('.', $av);
-
-            $decimal = isset($parts[1]) ? '.'.substr($parts[1], 0, 1) : null;
-            $av_echo = $parts[0].$decimal;
-
-        }
+        <?php 
+        $ratings = range(1,10);
         ?>
         <small>
-            @foreach($ratings as $rating)
-            <i class="ti-star {{ $rating <= $av ? 'text-lc-warning' : '' }}"></i>
+            @foreach($ratings as $rat)
+            <i class="ti-star {{ $rat <= $post->rating ? 'text-lc-warning' : '' }}"></i>
             @endforeach
-        </small>{{ $av_echo }} /10 <span class="ml-3"> ( {{ $ct }} Customer Review{{ $ct > 1 ? "s" : "" }} ) </span>
+        </small>{{ $post->rating }} /10 <span class="ml-3"> ( {{ $post->reviews }} Customer Review {{ $post->reviews > 1 ? "s" : "" }} ) </span>
     </p>
 </div>
 <div class="col-md-3">

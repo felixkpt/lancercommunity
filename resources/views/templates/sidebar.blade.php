@@ -1,5 +1,5 @@
     <div class="card pt-3 px-2 pb-2">
-        @if (isset($post_type) && $post_type == 'post')
+        @if (Route::current()->getName() == 'posts.show')
         @include('/posts/components/services-offered')
         @else
         <div>
@@ -12,7 +12,7 @@
     font-size: 16px;
     text-overflow: ellipsis;
     overflow: hidden;" href="{{ url('company/'.$post_temp->slug) }}">
-                        <span class="mx-2" style="width:30px;height:30px;display:inline-block"><img style="width:30px;height:30px" src="{{ asset($post_temp->featured_image) }}"></span>{{ $post_temp->company_name }}
+                        <span class="mx-2" style="width:30px;height:30px;display:inline-block"><img class="rounded-lg" style="width:30px;height:30px" src="{{ asset($post_temp->image) }}"></span>{{ $post_temp->company_name }}
                     </a>
                 </li>
                 @endforeach
@@ -23,7 +23,7 @@
         @endif
     </div>
     <div class="card mt-4 pt-3 px-4 pb-2">
-        @if(isset($post_type) && $post_type == 'post')
+        @if(Route::current()->getName() == 'posts.show')
         @include('/posts/components/similar-companies')
         @else
         <div>

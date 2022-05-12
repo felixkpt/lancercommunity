@@ -11,11 +11,11 @@
     }
     ?>
     <div class="flex flex-col w-4/5 bg-white shadow-lg p-1">
-        <form action="{{ route($route, ['id' => isset($post) ?? $post->id]) }}" method="post" class="w-full">
+        <form action="{{ route($route, ['id' => isset($post) ? $post->id : 0]) }}" method="post" class="w-full">
             @csrf
             <input type="hidden" name="_method" value="{{ $method }}">
             <input type="hidden" name="redirect" value="{{ url()->previous() }}">
-            <input type="hidden" name="id" value="{{ isset($post) ?? $post->id }}">
+            <input type="hidden" name="id" value="{{ isset($post) ? $post->id : 0 }}">
             <div class="w-full mb-4">
                 <input type="checkbox" <?php if($show_in_homepage) echo 'checked'; ?> class="m-1" name="show_in_homepage" id="use"><label for="use">Show in homepage</label>
             </div>

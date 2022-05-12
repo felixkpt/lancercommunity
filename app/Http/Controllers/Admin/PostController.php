@@ -67,8 +67,8 @@ class PostController extends Controller
         // The incoming request is valid....
   
         $rules = [];
-        if ($request->hasFile('featured_image')) {
-            $rules = array_merge($rules, ['featured_image' => $this->image_rules]);
+        if ($request->hasFile('image')) {
+            $rules = array_merge($rules, ['image' => $this->image_rules]);
         }
         $request->validate($rules);
         
@@ -79,10 +79,10 @@ class PostController extends Controller
         $title = ucfirst(trim($request->post('title')));
         $content = ucfirst($request->get('content'));
         $data = ['company_name' => $company_name, 'company_url' => $company_url, 'title' => $title, 'slug' => $slug, 'description' => Str::limit(strip_tags($content), 150), 'user_id' => $user_id, 'post_type' => $this->post_type];
-        if ($request->hasFile('featured_image')) {
-            $path = $request->file('featured_image')->store('public/images/posts');
+        if ($request->hasFile('image')) {
+            $path = $request->file('image')->store('public/images/'.date('Y').'/'.date('m').'/posts');
             $path = preg_replace('#public/#', 'uploads/', $path);
-            $data['featured_image'] = $path;
+            $data['image'] = $path;
         }
         
         try {
@@ -93,7 +93,11 @@ class PostController extends Controller
             PostContent::create(['post_id' => $post->id, 'content' => $content]);
             // Attaching author
             $post->authors()->attach($user_id, ['manager_id' => $user_id]);
-        
+            // Attaching categories
+            foreach($request->get('categories') as $category) {
+                $post->categories()->attach($category);
+            }
+
             DB::commit();
         
         } catch (Throwable $e) {
@@ -112,7 +116,7 @@ class PostController extends Controller
     public function edit($id)
     {
         $post = Post::where('post_type', $this->post_type)->where('id', $id)->first();
-        // dd($post->content->id);
+        // dd($post->categories);
         return view($this->route.'.edit', ['route' => $this->route.'.update', 'method' => 'patch', 'post' => $post]);
     }
 
@@ -134,8 +138,8 @@ class PostController extends Controller
             'content' => 'required|string|min:3|max:2000000',
         ];
 
-        if ($request->hasFile('featured_image')) {
-            $rules = array_merge($rules, ['featured_image' => $this->image_rules]);
+        if ($request->hasFile('image')) {
+            $rules = array_merge($rules, ['image' => $this->image_rules]);
         }
         
         $request->validate($rules);
@@ -143,10 +147,10 @@ class PostController extends Controller
         $title = ucfirst(trim($request->post('title')));
         $content = ucfirst($request->get('content'));
         $data = ['company_name' => $company_name, 'company_url' => $company_url, 'title' => $title, 'slug' => $slug, 'description' => Str::limit(strip_tags($content), 150),];
-        if ($request->hasFile('featured_image')) {
-            $path = $request->file('featured_image')->store('public/images/posts');
+        if ($request->hasFile('image')) {
+            $path = $request->file('image')->store('public/images/'.date('Y').'/'.date('m').'/posts');
             $path = preg_replace('#public/#', 'uploads/', $path);
-            $data['featured_image'] = $path;
+            $data['image'] = $path;
         }
         
         try {
@@ -156,9 +160,16 @@ class PostController extends Controller
             $post->update($data);
             PostContent::where('post_id', $post->id)->update(['content' => $content]);
             // Attaching author
-            $authors = json_decode(json_encode($post->mainAuthors), true);
+            $authors = $post->mainAuthors->toArray();
             if (!in_array($user_id, array_column($authors, 'id'))) {
                 $post->authors()->attach($user_id, ['manager_id' => $user_id]);
+            }
+            // Attaching categories
+            $categories = $post->categories->toArray();
+            foreach($request->get('categories') as $category) {
+                if (!in_array($category, array_column($categories, 'id'))) {
+                    $post->categories()->attach($category);
+                }
             }
     
             DB::commit();

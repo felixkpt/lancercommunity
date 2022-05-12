@@ -1,5 +1,5 @@
 @include('/admin/templates/header')    
-<div class="flex flex-col px-3 overflow-x-hidden">
+<div class="flex flex-col px-3">
     <div class="flex flex-auto justify-center items-center">
         <table class="table-fixed w-10/12 bg-white rounded shadow-sm divide-y divide-gray-200 table-auto">
             <thead>
@@ -20,7 +20,7 @@
                             <span class="px-2 text-gray-600">{{ $personality->name }}</span>
                             </div>
                             <div class="flex w-24 h-16 rounded">
-                                <img class="w-24 h-16 rounded" src="{{ asset($personality->featured_image) }}">
+                                <img class="w-24 h-16 rounded" src="{{ asset($personality->image) }}">
                             </div>
                         </div>
                     </td>

@@ -1,7 +1,7 @@
 <?php
 
-use App\Http\Controllers\AuthorController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthorController;
 
 Route::controller(AuthorController::class)->group(function() {
 

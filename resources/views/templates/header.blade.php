@@ -15,10 +15,18 @@
     @include('/templates/nav')
     <div class="clearfix"></div>
     <!-- Start sidenav + content -->
-    <div class="container-fluid py-3 py-lg-4 bg-light">
-        <div class="container">
+    <div class="container-fluid p-0 bg-light">
+        <div class="container-fluid">
             <div class="row">
+            @if (isset($hide_sidebar) && $hide_sidebar)
+                <main class="col-md-12 p-1" style="overflow-x:hidden">
+                    <div class="row">
+                @else 
                 <main class="col-md-9" style="overflow-x:hidden">
+                    <div class="row">
+                        <div class="col">
+                            <div class="row justify-content-center p-1 p-md-3">
+                @endif
                     @if (!isset($hide_notification) || !$hide_notification)
                     @include('/components/notification')
                     @endif

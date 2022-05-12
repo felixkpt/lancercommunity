@@ -6,7 +6,7 @@ $map = ['I' => 'Introverted', 'E' => 'Extroverted', 'S' => 'Sensing', 'N' => 'iN
 <figure style="background: radial-gradient(#eae5eb99, #0000000a);" class="w-full md:flex m-1 md:m-4 overflow-hidden rounded-xl p-4 md:p-0">
     <div class="md:h-4/5 md:w-1/4 overflow-hidden mx-auto">
         <div class="w-52 h-44 mx-auto sm:mx-0">
-            <img style="min-height: 100px!important" class="h-full mx-auto rounded-lg md:rounded-none" src="{{ asset($personality->featured_image) }}" alt="">
+            <img style="min-height: 100px!important" class="h-full mx-auto rounded-lg md:rounded-none" src="{{ asset($personality->image) }}" alt="">
         </div>
         <div class="w-full pt-1">
             @include('/components/social-media-links')

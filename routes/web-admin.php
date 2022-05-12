@@ -3,6 +3,7 @@ use Illuminate\Support\Facades\Route;
 use Glhd\Gretel\Routing\ResourceBreadcrumbs;
 
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\TypologyController;
 use App\Http\Controllers\Admin\PersonController;
 use App\Http\Controllers\Admin\PostController;
@@ -120,6 +121,18 @@ Route::middleware('permission:role-list')->name('admin.')->prefix('/admin')->gro
         ->breadcrumb('Show', '.index');
         Route::delete('/', 'destroy')->name('destroy');
         Route::post('/approve', 'approve')->name('approve');
+    });
+
+    Route::name('categories.')->prefix('/categories')->controller(CategoryController::class)->group(function() {
+        Route::get('/', 'index')->name('index')
+        ->breadcrumb('Categories', 'admin.index');
+        Route::get('/create', 'create')->name('create')
+        ->breadcrumb('Create', '.index');
+        Route::get('/{id}/edit', 'edit')->name('edit')
+        ->breadcrumb('Edit', '.index');
+        Route::post('/', 'store')->name('store');
+        Route::patch('/{id}', 'update')->name('update');
+        Route::delete('/', 'destroy')->name('destroy');
     });
     
 });

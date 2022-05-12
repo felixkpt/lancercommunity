@@ -24,7 +24,9 @@ class AuthorController extends Controller
             $q->where([['post_user.user_id', $author->id], ['post_user.manager_id', $author->id]]);
         })->orderBy('updated_at', 'desc')->paginate($this->perPage);
         
-        $data = ['title' => 'Posts by Author', 'description' => 'Posts by Author', 'author' => $author, 'posts' => $posts];
+        $title = 'Companies reviewed by '.$author->name;
+        $description = $title;
+        $data = ['title' => $title, 'description' => $description, 'author' => $author, 'posts' => $posts];
         return view('authors/show', $data);   
     }
 
@@ -40,7 +42,8 @@ class AuthorController extends Controller
             $q->where([['post_user.user_id', $author->id], ['post_user.manager_id', $author->id]]);
         })->orderBy('updated_at', 'desc')->paginate($this->perPage);
 
-        $data = ['title' => 'Post lead by Author', 'description' => 'Post lead by Author', 'author' => $author, 'posts' => $posts];
+        $title = 'Posts written & lead by '.$author->name;
+        $data = ['title' => $title, 'description' => 'Post lead by Author', 'author' => $author, 'posts' => $posts];
         return view('authors/managers', $data);   
     }
     

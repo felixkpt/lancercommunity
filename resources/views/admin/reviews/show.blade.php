@@ -1,5 +1,5 @@
 @include('/admin/templates/header')    
-<div class="flex flex-col px-3 overflow-x-hidden">
+<div class="flex flex-col px-3">
     <div class="flex flex-wrap justify-center shadow rounded-lg">
         <div class="bg-gray-50 w-2/3 p-1">
             <div class="w-full mb-1">
@@ -14,7 +14,7 @@
             </div>
 
             <h2 class="text-2xl">{{ $review->title }}</h2>
-            <p>{{ $review->content }}</p>
+            <p>{!! $review->content !!}</p>
             <div class="w-full flex flex-wrap lg:justify-between">
                 <div class="flex w-full md:w-2/3 font-thin text-sm">
                     <a class="pl-1 link-default hover:underline w-full" href="{{ url('admin/reviews?author='.Str::slug($review->author->slug)) }}" class="link-yellow pl-1">{{ $review->author->name }}</a>

@@ -28,7 +28,9 @@
                                             @endif
                                         </div>
                                         <div class="flex px-2 border border-gray-300 w-min mr-2">{{ ($key + 1) }}</div>
-                                        <div class="flex flex-wrap w-full lg:w-11/12">
+                                        <div class="flex flex-nowrap w-full lg:w-11/12">
+                                        <img class="m-1" src="{{ asset($post->image) }}" alt="" style="height:40px;width:40px">
+                
                                             <a class="truncate text-xl hover:underline" href="{{ url('company/'.$post->slug) }}">{{ Str::limit($post->title, 150) }}</a>
                                         </div>
                                     </div>
@@ -69,6 +71,6 @@
                 </tbody>
             </table>
         </div>
-        @include('/components/pagination')
+        @include('/admin/components/pagination')
     </div>
 @include('/admin/templates/footer')

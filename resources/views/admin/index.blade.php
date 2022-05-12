@@ -1,5 +1,5 @@
 @include('/admin/templates/header')    
-<div class="flex flex-col px-3 overflow-x-hidden">
+<div class="flex flex-col px-3">
 
     <div class="min-h-screen bg-blue-50">
         

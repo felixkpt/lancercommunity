@@ -4,8 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
-use Auth;
+use Illuminate\Support\Facades\Auth;
 use App\Models\Post;
+use App\Models\Review;
 use App\Models\PostContent;
 use Illuminate\Http\Request;
 
@@ -17,7 +18,7 @@ class PostController extends Controller
     private $image_rules = 'mimes:jpg,png,jpeg,gif|min:2|max:2024|dimensions:min_width=100,min_height=100,max_width=2000,max_height=2000';
     protected $route = 'write-a-review';
     private $post_type = 'post';
-    private $perPage =20;
+    private $perPage = 5;
     /**
      * Showing all posts
      */
@@ -28,8 +29,8 @@ class PostController extends Controller
         if (!$posts) {
             return redirect()->back()->with('warning', 'Whoops! Not found.');
         }
-        $title = 'All posts';
-        $description = 'All posts';
+        $title = 'All reviews';
+        $description = 'All reviews';
         $data = ['title' => $title, 'description' => $description, 'posts' => $posts];
         return view('posts/index', $data);
     }
@@ -54,29 +55,47 @@ class PostController extends Controller
      */
     public function show($slug) {
 
-
         $post = Post::where('post_type', 'post')->where('slug', '=', $slug)->first();
         // user can view their post while it awaits moderation
         if (Auth::user() && in_array(Auth::user()->id, array_column(json_decode(json_encode($post->authors), true), 'id')) ) {
-            $post = Post::where('post_type', 'post')->where('slug', '=', $slug);
+            $post = Post::where('post_type', 'post')->where('slug', '=', $slug)->first();
         }else{
-            $post = Post::where('post_type', 'post')->where('slug', '=', $slug)->where('published', 'published');
+            $post = Post::where('post_type', 'post')->where('slug', '=', $slug)->where('published', 'published')->first();
         }
         
-        $post = $post->with('authors')->with('reviews', function($query) {
-            $query->where('reviews.published', 'published');
-            if (Auth::user()) {
-                $query->orWhere('reviews.user_id', '=', Auth::user()->id);
-            }
-        })->first();
-        // dd($post->reviews()->get());
+        $reviews = Review::whereHas('post', function($q) use($post) {
+            $q->where([['reviews.post_id', $post->id]]);
+        })->orderBy('updated_at', 'desc')->paginate($this->perPage);
+        // $reviews->appends(['sd' => '33']);
+        
         if (!$post) {
             return redirect()->back()->with('warning', 'Whoops! Not found.');
         }
         $title = $post->title;
         $description = $post->description;
-        $data = ['title' => $title, 'description' => $description, 'post' => $post, 'post_type' => $this->post_type];
+        
+        $this->updateRating($reviews);
+        
+        $data = ['title' => $title, 'description' => $description, 'post' => $post, 'post_type' => $this->post_type, 'reviews' => $reviews];
         return view('posts/show', $data);
+    }
+
+    private function updateRating($reviews) {
+
+        $ct = count($reviews);
+        if ( $ct < 1) {return true;}
+        $post_id = $reviews[0]->post_id;
+
+        $totals = 0;
+        foreach($reviews as $review) {
+            $totals += $review->rating;
+        }
+        $rating = $totals / $ct;
+        $parts = explode('.', $rating);
+        $decimal = isset($parts[1]) ? '.'.substr($parts[1], 0, 1) : null;
+        $rating = $parts[0].$decimal;
+
+        Post::find($post_id)->update(['reviews' => $ct, 'rating' => $rating,]);
     }
 
     /**
@@ -120,8 +139,8 @@ class PostController extends Controller
              $rules = ['company_name' => 'required|string|min:3|max:150|unique:posts,company_name'.($post_id ? ','.$post_id : ''),
                 'content' => 'required|string|min:3|max:2000000',
                 ];
-             if ($request->hasFile('featured_image')) {
-                 $rules = array_merge($rules, ['featured_image' => $this->image_rules]);
+             if ($request->hasFile('image')) {
+                 $rules = array_merge($rules, ['image' => $this->image_rules]);
              }
              $request->validate($rules);
              
@@ -136,10 +155,10 @@ class PostController extends Controller
                 $data['published'] = 'unapproved';
              }
 
-             if ($request->hasFile('featured_image')) {
-                 $path = $request->file('featured_image')->store('public/images/posts');
+             if ($request->hasFile('image')) {
+                 $path = $request->file('image')->store('public/images/posts');
                  $path = preg_replace('#public/#', 'uploads/', $path);
-                 $data['featured_image'] = $path;
+                 $data['image'] = $path;
              }
              
              try {

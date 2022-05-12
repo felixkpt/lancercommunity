@@ -1,4 +1,4 @@
-@if($errors->any())
+@if(!isset($hide_notification) && $errors->any())
     @foreach ($errors->all() as $error)
         <div class="alert alert-danger" role="alert">
             <strong class="font-bold">Alert!</strong>

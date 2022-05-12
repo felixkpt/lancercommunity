@@ -1,5 +1,7 @@
 @include('/templates/header')
-<div class="content">
-      @include('/posts/create-edit')
+<div class="col">
+      <div class="card">
+            @include('/posts/create-edit')
+      </div>
 </div>
 @include('/templates/footer')

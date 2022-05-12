@@ -1,5 +1,5 @@
 @include('/admin/templates/header')    
-<div class="flex flex-col px-3 overflow-x-hidden">
+<div class="flex flex-col px-3">
 
         <div class="flex justify-end w-auto text-left border-b-2 border-gray-300 pb-2">
             <a href="{{ url('admin/pages/create') }}" class="text-white rounded py-2 px-4 bg-cyan-500 hover:bg-cyan-600">Create a new</a>
@@ -58,6 +58,6 @@
                 </tbody>
             </table>
         </div>
-        @include('/components/pagination')
+        @include('/admin/components/pagination')
     </div>
 @include('/admin/templates/footer')

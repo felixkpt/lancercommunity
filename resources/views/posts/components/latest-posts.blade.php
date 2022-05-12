@@ -9,7 +9,7 @@ $posts = Post::latest()->limit(8)->get();
         <div class="h-full bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
             <div class="w-56 h-36 shadow rounded m-1">
                 <a class="block overflow-hidden" href="{{ url('posts/'.$post->slug) }}">
-                    <img class="img-fadein w-48 h-36 mx-auto" src="{{ asset($post->featured_image) }}" alt="{{ $post->title }}" title="{{ $post->title }}">
+                    <img class="img-fadein w-48 h-36 mx-auto" src="{{ asset($post->image) }}" alt="{{ $post->title }}" title="{{ $post->title }}">
                 </a>
             </div>
             <div class="p-1 w-56">

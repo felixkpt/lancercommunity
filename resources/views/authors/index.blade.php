@@ -5,7 +5,7 @@
             <div class="col-12">
                 <h1>Companies reviewed by {{ $author->name }}</h1>
                 <div class="mt-2 p-1 bg-gray-100">
-                        @include('/posts/components/posts-list')
+                        @include('/posts/components/list')
                 </div>
             </div> 
         @endforeach

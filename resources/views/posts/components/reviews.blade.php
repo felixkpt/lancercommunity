@@ -1,10 +1,10 @@
-<div class="card p-3">
+<div class="card pb-3 pt-5 px-3" id="reviews">
     <div class="row">
-        @foreach($post->reviews as $review)
+        @foreach($reviews as $review)
         <div class="col-12">
             <hr>
         </div>
-        <div class="col-md-2 mt-3"><img src="https://www.tm-town.com/assets/default_female600x600-3702af30bd630e7b0fa62af75cd2e67c.png" alt="" class="user-img rounded-circle border p-1" width="100%"></div>
+        <div class="col-md-2 mt-3"><img src="{{ asset(App\Models\User::where('id', $review->user_id)->first()->avatar) }}" alt="" class="user-img rounded-circle border p-1" width="100%"></div>
         <div class="col-md-10 mt-3">
             <h4 class="mb-1">{{ $review->title }}</h4>
             <p>
@@ -18,9 +18,9 @@
                 @else
                 <small class="text-lc-warning">No rating</small>
                 @endif 
-                <span class="ml-3"> Reviewed {{ $review->updated_at->diffForHumans() }} <a href="">{{ App\Models\User::where('id', $review->user_id)->first()->name }}</a></span>
+                <span class="ml-3 text-muted"> Reviewed {{ $review->updated_at->diffForHumans() }}, by <a href="">{{ App\Models\User::where('id', $review->user_id)->first()->name }}</a></span>
             </p>
-            <p class="mb-0">{{ $review->content }}</p>
+            <p class="mb-0">{!! $review->content !!}</p>
         </div>
         @if(Auth::user() && $review->user_id == Auth::user()->id)
         @if($review->published == 'unapproved')
@@ -37,10 +37,14 @@
         @endif
         @endif
         @endforeach
-        @if(count($post->reviews) < 1)
+        @if(count($reviews) < 1)
         <div class="col-12 text-muted">
             No reviews yet @if(!Auth::user() || !in_array(Auth::user()->id, array_column(json_decode(json_encode($post->authors), true), 'id')) )<a href="{{ url('add-a-review/'.$post->id) }}">Review {{ $post->company_name }} now</a>@endif
         </div>
         @endif
+        
     </div>
+    <?php $items = $reviews; ?>
+    @include('/components/pagination')
 </div>
+

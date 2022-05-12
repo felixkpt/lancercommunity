@@ -2,16 +2,34 @@
 
 namespace App\Models;
 
+use Laravel\Scout\Searchable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Post extends Model
 {
     use HasFactory;
+    use Searchable;
+    public $asYouType = true;
+
+    /**
+     * Get the indexable data array for the model.
+     *
+     * @return array
+     */
+    public function toSearchableArray()
+    {
+        $array = $this->toArray();
+
+        // Customize array...
+
+        return $array;
+    }
+    
     protected $fillable = [
         'company_name', 
         'company_url', 
-        'title', 'slug', 'description', 'post_type', 'featured_image', 'published'];
+        'title', 'slug', 'description', 'post_type', 'image', 'published', 'reviews', 'rating'];
     
     /**
      * Authors relationship method
@@ -34,6 +52,25 @@ class Post extends Model
         ->withTimestamps()
         ->withPivot('manager_id')
         ;
+    }
+
+    /**
+     * Category relationship method
+     * 1 to many (One post can belong to one or more Categories)
+     */
+    public function category() {
+        return $this->belongsToMany(Category::class, 'post_category', 'post_id')
+        ->withTimestamps();
+    }
+
+
+    /**
+     * Categories relationship method
+     * 1 to many (One post can belong to one or more Categories)
+     */
+    public function categories() {
+        return $this->belongsToMany(Category::class, 'post_category', 'post_id', 'category_id')
+        ->withTimestamps();
     }
 
     public function content() {

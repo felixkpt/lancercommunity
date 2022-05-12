@@ -1,3 +1,6 @@
+<?php 
+$sidebar_items = ['Posts' => 'admin/posts', 'Reviews' => 'admin/reviews', 'Pages' => 'admin/pages', 'Categories' => 'admin/categories',]
+?>
 <div class="h-screen overflow-y-auto" style="position:sticky;top: 37px;;width:210px">
     <div class="flex flex-col overflow-x-hidden h-screen py-2 px-1 justify-between">
         <div class="flex items-center justify-between text-gray-600 text-2xl">
@@ -6,30 +9,13 @@
 
         <div class="flex flex-col flex-auto">
  
+            @foreach($sidebar_items as $label => $uri)
             <div class="">
                 <div class="flex flex-row py-1 pl-1">
-                <a class="block w-full font-bold text-gray-500 border-l-2 border-gray-800 hover:text-gray-200 hover:border-l-2 hover:border-blue-400 px-1 link rounded" href="{{ url('admin/posts') }}">Posts</a>
+                <a class="block w-full font-bold text-gray-500 border-l-2 border-gray-800 hover:text-gray-300 hover:border-l-2 hover:border-blue-400 px-1 link rounded" href="{{ url($uri) }}">{{ $label }}</a>
                 </div>
             </div>
-            
-            <div class="">
-                <div class="flex flex-row py-1 pl-1">
-                <a class="block w-full font-bold text-gray-500 border-l-2 border-gray-800 hover:text-gray-300 hover:border-l-2 hover:border-blue-400 px-1 link rounded" href="{{ url('admin/reviews') }}">Reviews</a>
-                </div>
-            </div>
-            
-            <div class="">
-                <div class="flex flex-row py-1 pl-1">
-                <a class="block w-full font-bold text-gray-500 border-l-2 border-gray-800 hover:text-gray-300 hover:border-l-2 hover:border-blue-400 px-1 link rounded" href="{{ url('admin/pages') }}">Pages</a>
-                </div>
-            </div>
-            
-            <div class="">
-                <div class="flex flex-row py-1 pl-1">
-                <a class="block w-full font-bold text-gray-500 border-l-2 border-gray-800 hover:text-gray-300 hover:border-l-2 hover:border-blue-400 px-1 link rounded" href="{{ url('admin/users') }}">Users</a>
-                </div>
-            </div>
-            
+            @endforeach
         </div>
 
         <!-- Button (Logout) -->

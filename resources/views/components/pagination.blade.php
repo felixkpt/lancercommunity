@@ -1,9 +1,7 @@
-<?php $items = @($people ?: $countries ?: $items ?: $posts); 
-if (method_exists($items, 'links')) {
-?>
-<div class="flex w-full my-8 justify-center">
-    <div class="flex">
-        {{ $items->links('pagination::tailwind') }}
+@if (method_exists($items, 'links'))
+<div class="row my-8 justify-center">
+    <div class="col">
+        {{ $items->links() }}
     </div>
 </div>
-<?php } ?>
+@endif

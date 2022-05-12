@@ -1,5 +1,5 @@
 @include('/admin/templates/header')    
-<div class="flex flex-col px-3 overflow-x-hidden">
+<div class="flex flex-col px-3">
 
     <div class="flex flex-wrap w-full justify-center shadow rounded-lg">
         <div class="w-full sm:w-10/12">
@@ -47,7 +47,7 @@
             <div class="flex w-full bg-gray-100">
                 <div class="flex flex-col w-full">
                     <div class="p-4 bg-gray-100 text-xl sm:text-3xl flex flex-col md:flex-row items-baseline">
-                    <span class="flex p-1">No people created yet!</span> <a class="flex p-1 text-purple-500 text-lg sm:text-xl font-medium" href="{{ route('admin.people.create') }}">Start writing your first celeb article now...</a>
+                    <span class="flex p-1">No reviews yet!</span>
                     </div>
                 </div>
             </div>
