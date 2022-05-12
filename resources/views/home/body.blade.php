@@ -39,4 +39,4 @@
     <div class="col-md-3">
         @include('/templates/sidebar')
     </div>
-</div>x
+</div>

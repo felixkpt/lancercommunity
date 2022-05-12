@@ -28,5 +28,7 @@
                             <div class="row justify-content-center p-1 p-md-3">
                 @endif
                     @if (!isset($hide_notification) || !$hide_notification)
-                    @include('/components/notification')
+                    <div class="col-12">
+                     @include('/components/notification')
+                    </div>
                     @endif

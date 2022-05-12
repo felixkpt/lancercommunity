@@ -56,6 +56,10 @@ class PostController extends Controller
     public function show($slug) {
 
         $post = Post::where('post_type', 'post')->where('slug', '=', $slug)->first();
+        if (!$post) {
+            return redirect()->back()->with('warning', 'Whoops! Not found.');
+        }
+        
         // user can view their post while it awaits moderation
         if (Auth::user() && in_array(Auth::user()->id, array_column(json_decode(json_encode($post->authors), true), 'id')) ) {
             $post = Post::where('post_type', 'post')->where('slug', '=', $slug)->first();
@@ -68,9 +72,6 @@ class PostController extends Controller
         })->orderBy('updated_at', 'desc')->paginate($this->perPage);
         // $reviews->appends(['sd' => '33']);
         
-        if (!$post) {
-            return redirect()->back()->with('warning', 'Whoops! Not found.');
-        }
         $title = $post->title;
         $description = $post->description;
         

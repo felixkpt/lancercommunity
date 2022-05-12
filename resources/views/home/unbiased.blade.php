@@ -8,7 +8,7 @@
                 <p> We hired the logo designer from <a href="{{ url('company/fiverr') }}">Fiverr marketplace</a>, the frontend engineer was hired from <a href="{{ url('company/upwork') }}">Upwork</a>                    and Researchers for providing credible information that we use for reviewing different companies are actually hired from <a href="{{ url('company/freelancer') }}">Freelancer</a>. </p>
                 <p> Our team has also used a couple other freelance services and we can confidently say that our community actually knows a lot about freelancing and we are confident that we can guide you in the process of finding the best company or freelancer
                     for your next project. </p><a href="{{ url('write-a-review') }}" class="btn main-btn btn-lg px-4">Leave a review</a></div>
-            <div class="col-md-5 align-self-center"><img src="https://web.archive.org/web/20220210173158/https://static.sitejabber.com/img/sj-header_image.1610825323.webp" alt="" width="100%"></div>
+            <div class="col-md-5 align-self-center"><img src="{{ asset('images/sj-header_image.1610825323.webp') }}" alt="" width="100%"></div>
         </div>
     </div>
 </div>

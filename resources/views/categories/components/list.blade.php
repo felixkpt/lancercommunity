@@ -15,7 +15,7 @@ foreach($items as $key =>  $category): ?>
 </div>
 <?php endforeach; ?>
 @if(count($items) < 1)
-<div class="row shadow p-1 mt-2">
+<div class="h3 text-muted">
     No categories
 </div>
 @endif
