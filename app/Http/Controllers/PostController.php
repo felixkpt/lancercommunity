@@ -59,7 +59,7 @@ class PostController extends Controller
         if (!$post) {
             return redirect()->back()->with('warning', 'Whoops! Not found.');
         }
-        
+
         // user can view their post while it awaits moderation
         if (Auth::user() && in_array(Auth::user()->id, array_column(json_decode(json_encode($post->authors), true), 'id')) ) {
             $post = Post::where('post_type', 'post')->where('slug', '=', $slug)->first();
@@ -75,13 +75,17 @@ class PostController extends Controller
         $title = $post->title;
         $description = $post->description;
         
-        $this->updateRating($reviews);
+        $this->updateRating($post);
         
         $data = ['title' => $title, 'description' => $description, 'post' => $post, 'post_type' => $this->post_type, 'reviews' => $reviews];
         return view('posts/show', $data);
     }
 
-    private function updateRating($reviews) {
+    private function updateRating($post) {
+
+        $reviews = Review::whereHas('post', function($q) use($post) {
+            $q->where([['reviews.post_id', $post->id]]);
+        })->orderBy('updated_at', 'desc')->get();
 
         $ct = count($reviews);
         if ( $ct < 1) {return true;}
