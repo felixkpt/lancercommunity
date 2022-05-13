@@ -1,5 +1,5 @@
 <?php 
-$nav_items = ['People' => 'admin/people', 'Posts' => 'admin/posts',]
+$nav_items = ['User Roles' => 'admin/users/roles', 'Posts' => 'admin/posts',]
 ?>
 <nav id="primary-nav" class="sticky top-0 z-50 bg-gray-800 py-2">
     <div class="px-2 mx-auto flex flex-wrap items-center justify-between">

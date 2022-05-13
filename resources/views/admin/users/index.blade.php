@@ -72,9 +72,8 @@
                 </tr>
                 @endif
   </table>
-  <div class="flex flex-col w-full lg:w-10/12 mt-2">
-  {!! $users->render() !!}
-  </div>
+  <?php $items = $users; ?>
+  @include('/admin/components/pagination')
 </div>
 
 </div>
