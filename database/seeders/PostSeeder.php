@@ -22,7 +22,7 @@ class PostSeeder extends Seeder
      *
      * @return void
      */
-    public function run($counts = 20)
+    public function run($counts = 50)
     {
         $this->faker = Factory::create();
 
