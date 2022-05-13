@@ -29,7 +29,7 @@
                                     @foreach($ratings as $rat)
                                     <i class="ti-star {{ $rat <= $post->rating ? 'text-lc-warning' : '' }}"></i>
                                     @endforeach
-                                </small>{{ $post->rating }} /10 <span class="ml-3"> ( {{ $post->reviews }} Customer Review {{ $post->reviews > 1 ? "s" : "" }} ) </span>
+                                </small>{{ $post->rating }} /10 <span class="ml-3"> ( {{ $post->reviews }} Customer Review{{ $post->reviews > 1 ? "s" : "" }} ) </span>
                             </p>
                             <p>
                                 {!! Str::limit(strip_tags($post->content->content), 150) !!}
