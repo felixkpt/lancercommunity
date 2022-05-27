@@ -22,6 +22,10 @@ class CategoryController extends Controller
      */
     public function index()
     {
+        if (Category::count() === 0) {
+            Category::create(['name' => 'Uncategorized', 'slug' => 'uncategorized']);
+        }
+
         $categories = Category::paginate($this->perPage);
         $data = ['categories' => $categories];
         return view('admin/categories/index', $data);
@@ -53,17 +57,13 @@ class CategoryController extends Controller
             'slug' => 'max:100|unique:categories,slug',
             'parent' => 'integer',
         ];
-        if ($request->hasFile('image')) {
-            $rules = array_merge($rules, ['image' => $this->image_rules]);
-        }
+
         $request->validate($rules);
         
         $description = $request->get('description');
         $data = ['name' => $name, 'slug' => $slug, 'description' => $description, 'parent' => $request->get('parent')];
-        if ($request->hasFile('image')) {
-            $path = $request->file('image')->store('public/images/'.date('Y').'/'.date('m').'/categories');
-            $path = preg_replace('#public/#', 'uploads/', $path);
-            $data['image'] = $path;
+        if ($image_url = $request->get('image_url')) {
+            $data['image'] = $image_url;
         }
 
         Category::create($data);
@@ -108,23 +108,20 @@ class CategoryController extends Controller
 
         $name = $request->get('name');
         $slug = Str::of($request->get('slug') ?? $name)->slug('-')->value();
+
         $rules = [
             'name' => 'required|max:100|unique:categories,name,'.$request->id,
             'slug' => 'max:100|unique:categories,slug,'.$request->id,
             'parent' => 'integer',
         ];
-        if ($request->hasFile('image')) {
-            $rules = array_merge($rules, ['image' => $this->image_rules]);
-        }
+
         $request->validate($rules);
         
         $description = $request->get('description');
     
         $data = ['name' => $name, 'slug' => $slug, 'description' => $description, 'parent' => $request->get('parent')];
-        if ($request->hasFile('image')) {
-            $path = $request->file('image')->store('public/images/'.date('Y').'/'.date('m').'/categories');
-            $path = preg_replace('#public/#', 'uploads/', $path);
-            $data['image'] = $path;
+        if ($image_url = $request->get('image_url')) {
+            $data['image'] = $image_url;
         }
 
         Category::find($id)->update($data);
@@ -140,6 +137,11 @@ class CategoryController extends Controller
      */
     public function destroy(Request $request)
     {
+        // cannot change uncategorized name or slug
+        if ($request->id == 1) {
+            return redirect()->back()->with('danger', 'Cannot delete default category');
+        }
+
         Category::find($request->get('id'))->delete();
         return redirect()->back()->with('danger', 'Category deleted');
     }

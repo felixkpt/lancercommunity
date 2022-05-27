@@ -1,7 +1,7 @@
 @include('/templates/header')
 <div class="col">
-    <div class="row justify-content-center">
-        <div class="col-12 col-md-6 m-4 px-6 py-4 bg-white shadow-md rounded-lg">
+    <div class="row justify-content-center px-2 py-4 ">
+        <div class="col-12 col-md-6 col-lg-4 m-4 bg-white shadow-md rounded-lg">
             <div><h2 class="text-2xl text-left pb-3">Forgot Password</h2></div>
             @include('/components/notification')
 

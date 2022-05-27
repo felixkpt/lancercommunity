@@ -12,7 +12,9 @@
     font-size: 16px;
     text-overflow: ellipsis;
     overflow: hidden;" href="{{ url('company/'.$post_temp->slug) }}">
-                        <span class="mx-2" style="width:30px;height:30px;display:inline-block"><img class="rounded-lg" style="width:30px;height:30px" src="{{ asset($post_temp->image) }}"></span>{{ $post_temp->company_name }}
+                        <span class="mx-2" style="width:30px;height:30px;display:inline-block">
+                            <img class="rounded-lg" style="width:30px;height:30px" src="{{ isset($post_temp->image) ? $post_temp->image : asset('images/default-company.png') }}">
+                        </span>{{ $post_temp->company_name }}
                     </a>
                 </li>
                 @endforeach
@@ -25,23 +27,15 @@
     <div class="card mt-4 pt-3 px-4 pb-2">
         @if(Route::current()->getName() == 'posts.show')
         @include('/posts/components/similar-companies')
+        @elseif(Route::current()->getName() == 'categories.show')
+        @include('/categories/components/more-categories')
         @else
         <div>
-            <h4>More articles</h4>
+            <h4>Featured Companies</h4>
 
-            <p>Lorem ipsum dolor sit amet.</p>
-            <p>Lorem ipsum dolor sit amet.</p>
-            <p>Lorem ipsum dolor sit amet.</p>
-            <p>Lorem ipsum dolor sit amet.</p>
-            <p>Lorem ipsum dolor sit amet.</p>
-            <p>Lorem ipsum dolor sit amet.</p>
-            <p>Lorem ipsum dolor sit amet.</p>
-            <p>Lorem ipsum dolor sit amet.</p>
+            <?php $posts = \App\Models\Post::limit(10)->get() ?>
+            @include('/posts/components/featured-posts')
 
-            <p>Lorem ipsum dolor sit amet.</p>
-            <p>Lorem ipsum dolor sit amet.</p>
-            <p>Lorem ipsum dolor sit amet.</p>
-            <p>Lorem ipsum dolor sit amet.</p>
 
 
         </div>

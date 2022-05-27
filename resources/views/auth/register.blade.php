@@ -1,7 +1,7 @@
 @include('/templates/header')
 <div class="col">
-    <div class="row justify-content-center">
-        <div class="col-12 col-md-6 m-4 px-6 py-4 bg-white shadow-md rounded-lg">
+    <div class="row justify-content-center px-2 py-4 ">
+        <div class="col-12 col-md-6 col-lg-4 bg-white shadow-md rounded-lg">
             @include('/components/notification')
             <div id="account-chooser" class="w-full md:w-8/12 mx-auto">
                 <div><h2 class="text-2xl text-left pb-3">Account register</h2></div>
@@ -36,13 +36,15 @@
                             </label>
                             <input class="form-control" id="password_confirmation" type="password" name="password_confirmation" required="required">
                         </div>
+                        <div class="mt-4">
+                            <button type="submit" class="w-100 btn px-2 secondary-btn">
+                                Register
+                            </button>
+                        </div>
                         <div class="d-flex justify-content-between mt-4">
                             <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}">
                                 Already registered?
                             </a>
-                            <button type="submit" class="btn px-2 secondary-btn">
-                                Register
-                            </button>
                         </div>
                     </form>
                 </div>

@@ -10,7 +10,7 @@
                 <input type="text" id="title" class="w-full" name="name" value="{{ old('name') ?: @$category->name }}">
             </div>
             <div class="mb-4 w-full">
-                <label for="slug">Slug </label>
+                <label for="slug">Slug (optional)</label>
                 <input type="text" id="slug" class="w-full" name="slug" value="{{ old('slug') ?: @$category->slug }}">
                 <small class="text-gray-500">The “slug” is the URL-friendly version of the name. It is usually all lowercase and contains only letters, numbers, and hyphens.</small>
             </div>
@@ -31,12 +31,16 @@
                 </textarea>
                 </div>
             </div>
-            <div class="mb-4">
-                <?php $image = isset($category) && $category->image; ?>
-                @include('/admin/components/image_upload')
-            </div>
-            <div class="mb-4">
-                <button class="p-2 rounded-lg bg-blue-500  text-white hover:bg-blue-700 hover:text-slate-200">Publish</button>
+            <div class="my-4">
+                <div class="flex flex-wrap w-full justify-between">
+                    <div class="w-full md:w-1/2 h-48">
+                        <?php $image = isset($category->image) ? $category->image : ''; $purpose = 'Use'; $label = 'Category image' ?>
+                        @include('/admin/media/components/quick-uploader')
+                    </div>
+                    <div class="w-full md:w-1/2 text-right mt-2 md:mt-auto">
+                        <button class="px-3 py-2 rounded-lg bg-blue-500  text-white hover:bg-blue-700 hover:text-slate-200">Publish</button>
+                    </div>
+                </div>
             </div>
         </form>
     </div>

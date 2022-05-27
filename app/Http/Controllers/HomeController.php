@@ -28,7 +28,7 @@ class HomeController extends Controller
         }
 
         $categories = Category::latest()->limit(8)->get();
-        $posts = Post::latest()->limit(5)->get();
+        $posts = Post::latest()->where('post_type', 'post')->where('published', 'published')->limit(5)->get();
         $reviews = Review::latest()->limit(4)->get();
 
         $slider_title = 'Search To Know If A Website Is Safe';
@@ -55,6 +55,6 @@ class HomeController extends Controller
         $data = ['title' => $title, 'description' => $description, 'post' => $post, 'hide_sidebar' => true,
                     'categories' => $categories, 'posts' => $posts, 'reviews' => $reviews, 
                     'slider_title' => $slider_title, 'slider_description' => $slider_description, 'slides' => $slides];
-        return view('home', $data);
+        return view('home/index', $data);
     }
 }

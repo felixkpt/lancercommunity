@@ -33,7 +33,7 @@
                 </div>
             </div>
             <div class="mb-4">
-                <?php $image_name = 'image'; ?>
+                <?php $image_name = 'image';$image = isset($post) ? asset($post->image) : null ?>
                 @include('/components/image_upload')
             </div>
             <div class="mb-4">

@@ -33,8 +33,8 @@
     </button>
     <div class="navbar-collapse collapse" id="websiteTopNav" style="">
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item mr-md-4 align-self-lg-center"><a href="{{ url('coupons') }}" class="nav-link menu_items">Coupons</a></li>
-                <li class="nav-item mr-md-4 align-self-lg-center"><a href="{{ url('company/fiverr') }}" class="router-link-active router-link-exact-active nav-link menu_items" aria-current="page">For Business</a></li>
+                <li class="nav-item mr-md-4 align-self-lg-center"><a href="{{ url('#coupons') }}" class="nav-link menu_items">Coupons</a></li>
+                <li class="nav-item mr-md-4 align-self-lg-center"><a href="{{ url('#for-business') }}" class="router-link-active router-link-exact-active nav-link menu_items" aria-current="page">For Business</a></li>
                 <li class="nav-item mb-2 mb-md-auto mr-md-4 align-self-lg-center"><a href="{{ url('write-a-review') }}" class="nav-link btn btn-block main-btn px-3 btn-important">Write a review</a></li>
                 @if(!Auth::user())
                 <li class="nav-item mr-md-4 align-self-lg-center"><a href="{{ route('register') }}" class="nav-link btn btn-block secondary-outline-btn px-3 btn-important">Sign Up</a></li>
@@ -46,6 +46,9 @@
                     Account
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <li>
+                        <a class="dropdown-item" href="{{ url('profile/'.Auth::user()->slug) }}">Profile</a>
+                    </li>
                     @if(Auth::user()->can('role-list'))
                     <li>
                         <a class="dropdown-item" href="{{ url('admin') }}">Dashboard</a>

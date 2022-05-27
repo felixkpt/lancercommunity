@@ -19,7 +19,7 @@ class ReviewSeeder extends Seeder
      *
      * @return void
      */
-    public function run($counts = 500)
+    public function run($counts = 20500)
     {
         $this->faker = Factory::create();
 

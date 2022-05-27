@@ -13,6 +13,9 @@ class Site {
     public function name() {
         return $this->config['name'];
     }
+    public function title() {
+        return $this->config['title'];
+    }
     public function description() {
         return $this->config['description'];
     }

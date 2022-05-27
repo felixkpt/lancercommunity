@@ -1,5 +1,6 @@
 <?php 
 return [
     'name' => 'LancerCommunity',
-    'description' => 'Detailed websites review',
+    'title' => 'Detailed websites review',
+    'description' => 'Detailed websites review, get the right company and freelancer for your business',
 ];

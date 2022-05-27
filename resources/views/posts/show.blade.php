@@ -3,11 +3,13 @@
     <div class="row">
         @include('/posts/components/post-heading')
         <div class="col-md-12 mt-3">
-            <div class="flex flex-wrap w-full">
-            <h1 class="px-1 flex w-full">{{ $post->title }}</h1>
+            <div class="row">
+            <div class="col-12">
+                <h1 class="px-1">{{ $post->title }}</h1>
+            </div>
             @include('/posts/components/authors-section')
             </div>
-            <div class="flex justify-start w-full mt-4 p-1 bg-gray-50 rounded">
+            <div class="row justify-content-start mt-4 p-1 bg-gray-50 rounded">
                 <div>
                 {!! $post->content->content !!}
                 </div>
@@ -36,5 +38,6 @@
         </div> 
     </div>
 </div>
-@include('/posts/components/reviews')
+<?php $reviews_heading = "User Reviews (".$reviews->total().')'; ?>
+@include('/posts/reviews/components/reviews')
 @include('/templates/footer')

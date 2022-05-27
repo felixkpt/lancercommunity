@@ -18,7 +18,8 @@ class PostController extends Controller
     private $image_rules = 'mimes:jpg,png,jpeg,gif|min:2|max:2024|dimensions:min_width=100,min_height=100,max_width=2000,max_height=2000';
     protected $route = 'write-a-review';
     private $post_type = 'post';
-    private $perPage = 5;
+    private $perPage = 20;
+    private $reviewsPerPage = 10;
     /**
      * Showing all posts
      */
@@ -59,18 +60,28 @@ class PostController extends Controller
         if (!$post) {
             return redirect()->back()->with('warning', 'Whoops! Not found.');
         }
-
+        
         // user can view their post while it awaits moderation
-        if (Auth::user() && in_array(Auth::user()->id, array_column(json_decode(json_encode($post->authors), true), 'id')) ) {
+        if (Auth::user() && in_array(Auth::user()->id, array_column($post->authors->toArray(), 'id')) ) {
             $post = Post::where('post_type', 'post')->where('slug', '=', $slug)->first();
         }else{
             $post = Post::where('post_type', 'post')->where('slug', '=', $slug)->where('published', 'published')->first();
+            if (!$post) {
+                return redirect()->back()->with('warning', 'Whoops! Not found.');
+            }
         }
-        
-        $reviews = Review::whereHas('post', function($q) use($post) {
-            $q->where([['reviews.post_id', $post->id]]);
-        })->orderBy('updated_at', 'desc')->paginate($this->perPage);
-        // $reviews->appends(['sd' => '33']);
+
+        // user can view their review while it awaits moderation
+        if ($user = Auth::user()) {
+            $reviews = Review::where([['published', 'published'], ['post_id', $post->id]])->orWhere([['post_id', $post->id], ['user_id', $user->id]])->whereHas('post', function($q) use($post) {
+                $q->where([['reviews.post_id', $post->id]]);
+            })->orderBy('updated_at', 'desc')->paginate($this->reviewsPerPage);
+        }else {
+            $reviews = Review::where('published', 'published')->whereHas('post', function($q) use($post) {
+                $q->where([['reviews.post_id', $post->id]]);
+            })->orderBy('updated_at', 'desc')->paginate($this->reviewsPerPage);
+        }
+        $reviews->fragment('reviews');
         
         $title = $post->title;
         $description = $post->description;
@@ -81,26 +92,34 @@ class PostController extends Controller
         return view('posts/show', $data);
     }
 
-    private function updateRating($post) {
-
-        $reviews = Review::whereHas('post', function($q) use($post) {
+    private function updateRating(&$post) {
+        
+        $post_id = $post->id;
+        $reviews = Review::where('published', 'published')->whereHas('post', function($q) use($post) {
             $q->where([['reviews.post_id', $post->id]]);
         })->orderBy('updated_at', 'desc')->get();
 
         $ct = count($reviews);
-        if ( $ct < 1) {return true;}
-        $post_id = $reviews[0]->post_id;
+        $rating = 0;
+        if ($ct > 0) {
 
-        $totals = 0;
-        foreach($reviews as $review) {
-            $totals += $review->rating;
+            $totals = 0;
+            foreach($reviews as $review) {
+                $totals += $review->rating;
+            }
+            $rating = $totals / $ct;
+            $parts = explode('.', $rating);
+            $decimal = isset($parts[1]) ? '.'.substr($parts[1], 0, 1) : null;
+            $rating = $parts[0].$decimal;
         }
-        $rating = $totals / $ct;
-        $parts = explode('.', $rating);
-        $decimal = isset($parts[1]) ? '.'.substr($parts[1], 0, 1) : null;
-        $rating = $parts[0].$decimal;
 
-        Post::find($post_id)->update(['reviews' => $ct, 'rating' => $rating,]);
+        if ($post->reviews != $ct && $post->rating != $rating) {
+            $post = Post::find($post_id);
+            $post->update(['reviews' => $ct, 'rating' => $rating,]);
+        }
+
+        return $post;
+
     }
 
     /**

@@ -26,6 +26,7 @@ class PageController extends Controller
      */
     public function index(Request $request)
     {
+        $title = 'All Pages';
         if ($slug = $request->get('author')) {
             $author = User::where('slug', $slug)->first();
             if (!$author) {
@@ -34,12 +35,15 @@ class PageController extends Controller
             $posts = Post::where('post_type', $this->post_type)->whereHas('author', function($q) use($author) {
                 $q->where([['post_user.user_id', $author->id], ['post_user.manager_id', $author->id]]);
             })->orderBy('updated_at', 'desc')->paginate($this->perPage);
-            $posts->appends(['author' => $slug]);   
+            $posts->appends(['author' => $slug]);
+            $title = 'All Pages by '.$author->name.' ('.$posts->total().')';
+
         }else {
             $posts = Post::where('post_type', $this->post_type)->with('authors')->orderBy('updated_at', 'desc')->paginate($this->perPage);
+            $title = 'All Pages ('.Post::where('post_type', $this->post_type)->count().')';
         }
         
-        return view($this->route.'.index', ['posts' => $posts, 'route' => $this->route]);
+        return view($this->route.'.index', ['posts' => $posts, 'route' => $this->route, 'title' => $title]);
     }
 
     /**
@@ -61,13 +65,14 @@ class PageController extends Controller
         
         $rules = [
             'title' => 'required|string|min:3|max:150|unique:posts,title',
+            'slug' => 'nullable|string|min:3|max:150|unique:posts,slug',
             'content' => 'required|string|min:3|max:2000000',
         ];
         $request->validate($rules);
 
         $user_id = Auth::user()->id;
         $title = ucfirst(trim($request->post('title')));
-        $slug = Str::of($title)->slug('-')->value();
+        $slug = Str::of($request->post('slug') ?? $title)->slug('-')->value();
         $content = ucfirst($request->get('content'));
         $data = ['title' => $title, 'slug' => $slug, 'description' => Str::limit(strip_tags($content), 150), 'user_id' => $user_id, 'post_type' => $this->post_type];
         
@@ -123,13 +128,14 @@ class PageController extends Controller
     {
         $rules = [
             'title' => 'required|string|min:3|max:150|unique:posts,title,'.$request->id,
+            'slug' => 'nullable|string|min:3|max:150|unique:posts,slug,'.$request->id,
             'content' => 'required|string|min:3|max:2000000',
         ];
         $request->validate($rules);
         
         $user_id = Auth::user()->id;
         $title = ucfirst(trim($request->post('title')));
-        $slug = Str::of($title)->slug('-')->value();
+        $slug = Str::of($request->post('slug') ?? $title)->slug('-')->value();
         $content = ucfirst($request->get('content'));
         $data = ['title' => $title, 'slug' => $slug, 'description' => Str::limit(strip_tags($content), 150),];
         $post = Post::where('post_type', $this->post_type)->find($request->id);

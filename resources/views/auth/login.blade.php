@@ -1,7 +1,7 @@
 @include('/templates/header')
 <div class="col">
-    <div class="row justify-content-center">
-        <div class="col-12 col-md-6 m-4 px-6 py-4 bg-white shadow-md rounded-lg">
+    <div class="row justify-content-center px-2 py-4 ">
+        <div class="col-12 col-md-6 col-lg-4 m-4 bg-white shadow-md rounded-lg">
             @include('/components/notification')
             <div id="account-chooser" class="mx-auto">
                 <div><h2 class="text-2xl text-left pb-3">Account login</h2></div>
@@ -30,12 +30,11 @@
                                     <span class="ml-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
                                 </label>
                             </div>
-                            <div class="">
-                                <button type="submit" class="btn px-2 secondary-btn">
-                                    Login with Email
-                                </button>
-                            </div>
-                            
+                        </div>
+                        <div>
+                            <button type="submit" class="w-100 btn px-2 secondary-btn">
+                                Login with Email
+                            </button>
                         </div>
                         <div class="d-flex items-center justify-center mt-4">
                             @if (Route::has('password.request'))

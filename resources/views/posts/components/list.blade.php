@@ -1,14 +1,19 @@
 <?php 
     $items = $posts ?? $author->posts;
     foreach($items as $key =>  $post): ?>
-    <div class="row shadow-sm p-1 mt-2">
-        <div class="col-12 col-md-3 col-lg-2">
-            <a class="d-block" style="margin: auto;width: max-content;" href="{{ url('company/'.$post->slug) }}">
-                <img class="mx-auto rounded-lg" src="{{ asset('').$post->image }}" alt="{{ $post->company_name }} logo" style="height: 120px;width:auto;">
-            </a>
+    <div class="row shadow-sm p-1 mt-2 text-center text-lg-left">
+        <div class="col-12 col-lg-3 overflow-hidden">
+            <div class="d-flex justify-content-center">
+                <a href="{{ url('company/'.$post->slug) }}">
+                    <div class="bg-light" style="max-width: 200px;">
+                        <?php $image = @getimagesize($post->image) ? $post->image : asset('images/default-company.png') ?>
+                        <img style="max-height: 150px;width:100%;" class="mx-auto rounded-lg" src="{{ $image }}" alt="{{ $post->company_name }} logo">
+                    </div>
+                </a>
+            </div>
         </div>
-        <div class="col-12 col-md-9 col-lg-10">
-            <a style="font-size:24px" class="" href="{{ url('company/'.$post->slug) }}">{{ $post->title }}</a>
+        <div class="col-12 col-lg-9">
+            <a style="font-size:20px" class="" href="{{ url('company/'.$post->slug) }}">{{ $post->title }}</a>
             @include('/posts/components/authors-section')
         </div>
     </div>

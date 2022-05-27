@@ -1,5 +1,5 @@
 @if (method_exists($items, 'links'))
-<div class="row my-8 justify-center">
+<div class="row my-4 justify-center">
     <div class="col">
         {{ $items->links() }}
     </div>
