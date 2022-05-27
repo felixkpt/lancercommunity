@@ -116,3 +116,13 @@ h2 {
     align-items: center;
 }
 /* text-white border-white bg-purple-600 hover:border-transparent  */
+
+.busy {
+    cursor: wait;
+}
+.not-allowed {
+    cursor: not-allowed;
+}
+#image_url_label:hover .inner {
+    @apply bg-gray-400
+}

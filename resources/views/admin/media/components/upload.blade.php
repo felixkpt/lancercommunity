@@ -66,12 +66,13 @@
         files.forEach(previewFile)
     }
 
-
     function uploadFile(file, uploadNode) {
         // console.log(uploadNode)
         var token = document.getElementsByName('_token')[0].value
         let uploadProgress = uploadNode.querySelector('.progress')
         let uploadMessage = uploadNode.querySelector(`.message`)
+        
+        let link = uploadNode.querySelector('a')
         
         var url = siteInfo.url+'admin/media'
         var xhr = new XMLHttpRequest()
@@ -101,18 +102,23 @@
                     uploadMessage.textContent = ''
                     
                     if (typeof quickUploader !== 'undefined' && quickUploader == true) {
-                        updateNewMedia(item, uploadNode)
+                        updateNewMedia(item, link)
                     }
 
                  }else{
                     // Error. Inform the user
                     uploadMessage.textContent = itemParsed.error
+                    link.classList.remove('busy')
+                    link.classList.add('not-allowed')
+        
                 }
 
             }
             else if (xhr.readyState == 4 && xhr.status != 200) {
                 // Error. Inform the user
                 uploadMessage.textContent = 'Failed'
+                link.classList.remove('busy')
+                link.classList.add('not-allowed')
             }
         })
 
@@ -123,10 +129,10 @@
         xhr.send(formData)
     }
 
-    function updateNewMedia(item, uploadNode) {
-        let link = uploadNode.querySelector('a')
+    function updateNewMedia(item, link) {
         link.setAttribute('href', `${siteInfo.url}admin/media/${JSON.parse(item).id}`)
         link.setAttribute('data', item)
+        link.classList.remove('busy')
         link.classList.add(`single-image`)
 
     }
@@ -143,10 +149,15 @@
             let div = document.createElement('div')
             div.classList.add('upload-preview', 'p-1', 'flex', 'flex-col', 'justify-between')
             
+            let imageWrapper = document.createElement('div')
+            imageWrapper.style = "height:180px;width:180px;overflow:hidden"
+            imageWrapper.classList.add('mx-auto')
             let img = document.createElement('img')
             img.src = reader.result
             img.style = `width:100%;height:100%!important`
-            div.appendChild(img)
+            imageWrapper.appendChild(img)
+            
+            div.appendChild(imageWrapper)
             
             let messageProgressWrapper = document.createElement('div')
             messageProgressWrapper.classList.add('w-full')
@@ -174,15 +185,16 @@
         mediaSection.classList.remove('hidden')
         
         let item = document.createElement('div')
-        item.classList.add('flex', 'flex-col', 'justify-center', 'bg-gray-400', 'single-image-parent')
+        item.classList.add('flex', 'flex-col', 'bg-gray-400', 'single-image-parent')
         
         let imageWrapper = document.createElement('div')
-        imageWrapper.style = "width:180px;height:180px;"
+        imageWrapper.style = "height:180px;width:180px;overflow:hidden"
         imageWrapper.classList.add('mx-auto')
         let link = document.createElement('a')
         link.setAttribute('href', '#')
+        link.classList.add('busy')
         link.setAttribute('data', '')
-        link.classList.add(`flex`, `md:w-full`)
+        link.classList.add(`block`, `md:w-full`, `h-full`)
         
         let img = document.createElement('img')
         img.style = `width:100%;height:100%!important`

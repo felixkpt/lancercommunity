@@ -1,15 +1,15 @@
 <?php use Illuminate\Support\Facades\Request; ?>
 <div class="w-full flex flex-col justify-center bg-gray-500 rounded" id="show-media">
     @if (!isset($single_media))
-    <div class="flex justify-end w-full mb-2 close">
-        <span title="Close">
+    <div class="flex justify-end w-full mb-2">
+        <span title="Close" class="close">
             <svg  class="w-6 h-6  text-gray-100" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
         </span>
     </div>
     @endif
     <div class="flex flex-col w-full p-2">
         <div class="flex">
-            <label class="text-gray-50 border-2 border-gray-100 mr-1 py-1 px-2 rounded" for="text" id="copy" data-purpose="{{ isset($purpose) ? $purpose : 'Copy' }}">Copy</label>
+            <label class="text-gray-50 border-2 border-gray-100 mr-2 py-1 px-2 rounded" for="text" id="copy" data-purpose="{{ isset($purpose) ? $purpose : 'Copy' }}">Copy</label>
             <input class="w-full rounded" type="readonly" id="text" value="{{ isset($media_item) ? asset($media_item->url) : '' }}">
         </div>
         <div class="flex justify-center mt-2">
@@ -30,7 +30,7 @@
                 </div>
                 <div class="flex w-full justify-between mt-2">
                     <a href="{{ isset($media_item) ? asset($media_item->url) : '#' }}" id="link" class="bg-blue-500 text-gray-100 font-bold hover:bg-blue-700 pointer rounded-lg p-1 mr-1" target="_blank">View full image</a>
-                    <form action="{{ isset($media_item) ? route('admin.media.destroy', $media_item->id) : '' }}" method="post" class="flex">
+                    <form action="{{ isset($media_item) ? url('admin/media/'.$media_item->id) : '' }}" method="post" class="flex">
                         @csrf
                         @method('delete')
                         <input type="hidden" name="redirect" value="" id="redirect">
@@ -45,8 +45,7 @@
 
 function singleImage(item) {
     item = JSON.parse(item)
-    var currentUri = <?php echo json_encode(Request::url()) ?>;
-
+   
     document.getElementById('currentMediaSectionModal').classList.remove('hidden')
 
     document.querySelector('#currentMediaSectionModal #text').value = item.url
@@ -62,8 +61,8 @@ function singleImage(item) {
     document.querySelector('#currentMediaSectionModal #uploaded').textContent = ' on '+date+' at '+time;
     document.querySelector('#currentMediaSectionModal #author a').textContent = item.author.name;
     document.querySelector('#currentMediaSectionModal #author a').setAttribute('href', `${siteInfo.url}admin/media?author=${item.author.slug}`);
-    document.querySelector('#currentMediaSectionModal form').setAttribute('action', `${siteInfo.url}/admin/media/${item.id}`)
-    document.querySelector('#currentMediaSectionModal #redirect').value = currentUri;
+    document.querySelector('#currentMediaSectionModal form').setAttribute('action', `${siteInfo.url}admin/media/${item.id}`)
+    document.querySelector('#currentMediaSectionModal #redirect').value = siteInfo.fullUrl;
     
 }
 

@@ -11,15 +11,19 @@
         <div class="grid gap-2 grid-cols-1 md:grid-cols-3 lg:grid-cols-5" id="content">
             @if (isset($media) && count($media) > 0)
             @foreach ($media as $item)
-            <div class="flex justify-center bg-gray-400 single-image-parent" style="height:180px">
-                <a class="flex md:w-full single-image" href="{{ url('admin/media/'.$item->id) }}" data="{{ $item }}">
-                <img style="height:100%;width:100%" src="{{ url($item->url) }}" alt="">
-                </a>
+            <div class="flex flex-col bg-gray-400 single-image-parent">
+                <div style="height:180px;width:180px;overflow:hidden">
+                    <a class="flex md:w-full single-image" href="{{ url('admin/media/'.$item->id) }}" data="{{ $item }}">
+                        <img style="height:100%;width:100%" src="{{ url($item->url) }}" alt="">
+                    </a>
+                </div>
             </div>
             @endforeach
             @else
-            <div class="flex justify-center single-image-parent" style="height:180px">
-                <span class="text-gray-300 md:text-xl">No uploaded media yet</span>
+            <div class="flex flex-col bg-gray-400 single-image-parent">
+                <div style="height:180px;width:180px;overflow:hidden">
+                    <span class="text-gray-300 md:text-xl">No uploaded media yet</span>
+                </div>
             </div>
             @endif
 
@@ -48,6 +52,7 @@
         uploadSection.classList.remove('hidden')
         mediaSection.classList.add('hidden')
     })
+    // Media switch click listener
     mediaSwitch.addEventListener('click', function () {
         mediaSection.classList.remove('hidden')
         uploadSection.classList.add('hidden')
@@ -99,11 +104,24 @@
                 mediaData.forEach(function (data) {
 
                     let item = document.createElement('div')
-                    item.classList.add('flex', 'justify-center', 'bg-gray-400', 'single-image-parent')
-                    item.style = "height:180px"
-                    item.innerHTML = `<a class="flex md:w-full single-image" href="${siteInfo.url}admin/media/${data.id}" data='${JSON.stringify(data)}'>
-                <img style="height:100%;width:100%" src="${data.url}" alt="">
-                </a>`
+                    item.classList.add('flex', 'flex-col', 'bg-gray-400', 'single-image-parent')
+                    
+                    let imageWrapper = document.createElement('div')
+                    imageWrapper.style = "height:180px;width:180px;overflow:hidden"
+                    imageWrapper.classList.add('mx-auto')
+                    let link = document.createElement('a')
+                    link.setAttribute('href', `${siteInfo.url}admin/media/${data.id}`)
+                    link.setAttribute('data', `${JSON.stringify(data)}`)
+                    link.classList.add(`block`, `md:w-full`, `h-full`, `single-image`)
+                    
+                    let img = document.createElement('img')
+                    img.style = `width:100%;height:100%!important`
+                    img.src = `${data.url}`
+                    
+                    link.append(img)
+                    imageWrapper.append(link)
+                    item.append(imageWrapper)
+
                     document.querySelector("#mediaSection").querySelector('#content').append(item);
                 })
                 // update title
@@ -139,10 +157,14 @@
 
     const mediaContent = document.querySelector('#mediaSection').querySelector('#content')
     mediaContent.addEventListener('click', function (event) {
-        if (event.target.closest('.single-image')) {
+        if (event.target.closest('a.single-image')) {
             event.preventDefault()
             let target = event.target.closest('.single-image');
             singleImage(target.getAttribute('data'))
+        }else if(event.target.closest('a.busy')) {
+            event.preventDefault()
+        }else if(event.target.closest('a.not-allowed')) {
+            event.preventDefault()
         }
     })
 

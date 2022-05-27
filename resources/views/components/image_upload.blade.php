@@ -17,12 +17,12 @@
                         opacity: 1;
                     }
                 </style>
-                <label class="mx-auto" id="preview" style="background: url('{{ @$image }}'), #ecf0f1;background-repeat: no-repeat;background-size: contain;background-position: center center;">
+                <label class="mx-auto" id="preview" style="background: url('{{ @$image }}'), #ebf5ffcf;background-repeat: no-repeat;background-size: contain;background-position: center center;">
                         <div class="inner d-flex h-100 align-items-center justify-content-center pt-7 mb-1">
                             <div class="col-12">
                                 <div class="inline text-center">
-                                    <div><i class="ti ti-upload rounded" style="font-size:x-large;background:#dee2e6;padding:1px"></i></div>
-                                    <div><span class="rounded" style="font-size:large;background:#dee2e6;padding:1px">Upload company logo</span></div>
+                                    <div><i class="ti ti-upload rounded" style="font-size:x-large;background:#ebf5ffcf;padding:1px"></i></div>
+                                    <div><span class="rounded" style="font-size:large;background: #ebf5ffcf;padding:1px">Upload company logo</span></div>
                                 </div>
                             </div>
                         </div>

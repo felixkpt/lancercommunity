@@ -69,7 +69,10 @@ class ReviewController extends Controller
      */
     public function destroy(Request $request)
     {
-        $review = Review::findOrFail($request->get('id'))->delete();
+        Review::findOrFail($request->get('id'))->delete();
+        if ($redirect = $request->get('redirect')) {
+            return \redirect()->to($redirect)->with('success', 'Review deleted.');
+        }
         return \redirect()->back()->with('success', 'Review deleted.');
     }
 }

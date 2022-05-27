@@ -10,6 +10,18 @@
         </div>
     </div>
 </div>
+<script>
+    var wrapper = document.getElementsByClassName('media-modal-wrapper')[0];
+    wrapper.addEventListener('click', function (event) {
+        var self = event.target.closest('.media-modal');
+        if (!self) {
+            wrapper.classList.add('hidden')
+        }
+    })
+    document.querySelector('.media-modal-wrapper .close').addEventListener('click', function () {
+        wrapper.classList.add('hidden')
+    })
+</script>
 <style>
     .media-modal-wrapper {
         position: fixed;
@@ -29,15 +41,3 @@
         height: 80vh;
     }
 </style>
-<script>
-    var wrapper = document.getElementsByClassName('media-modal-wrapper')[0];
-    wrapper.addEventListener('click', function (event) {
-        var self = event.target.closest('.media-modal');
-        if (!self) {
-            wrapper.classList.add('hidden')
-        }
-    })
-    document.querySelector('.media-modal-wrapper .close').addEventListener('click', function () {
-        wrapper.classList.add('hidden')
-    })
-</script>
