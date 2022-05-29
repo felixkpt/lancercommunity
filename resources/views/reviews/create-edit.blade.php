@@ -50,57 +50,74 @@
                     <div id="stars" class="mb-2 row" style="cursor:pointer">
                         <div class="col-12 col-lg-8 mb-3">
                             @foreach($ratings as $rating_temp)
-                            <i style="font-size:24px" class="ti-star <?= ($rating_temp <= $rating)  ? 'text-lc-warning' : ('') ?>" id="{{ $rating_temp }}" title="Rate {{ $rating_temp }}/10"></i>
+                            <i style="font-size:24px" class="rating-star ti-star <?= ($rating_temp <= $rating)  ? 'text-lc-warning' : ('') ?>" id="{{ $rating_temp }}" title="Rate {{ $rating_temp }}/10"></i>
                             @endforeach
                             <span id="rating-value"></span>
-                            <script>
-                                Array.from(document.getElementsByClassName('ti-star')).forEach(function(node) {
-                                    node.addEventListener('mouseover', function() {
-                                        let val = parseInt(node.getAttribute('id'))
-                                        // adding class
-                                        for (var i=1; i<=val; i++) {
-                                            document.getElementById(i).classList.add('text-lc-warning');
-                                        }
-                                        // removing class
-                                        for (var i=val + 1; i<=10; i++) {
-                                            document.getElementById(i).classList.remove('text-lc-warning');
-                                        }
-                                        document.getElementById('rating-value').innerHTML = val+'/10';
-                                    })
-                                    node.addEventListener('mouseleave', function() {
-                                        let val = parseInt(document.getElementById('rating').value)
-                                        // adding class
-                                        for (var i=1; i<=val; i++) {
-                                            document.getElementById(i).classList.add('text-lc-warning');
-                                        }
-                                        // removing class
-                                        for (var i=val + 1; i<=10; i++) {
-                                            document.getElementById(i).classList.remove('text-lc-warning');
-                                        }
-                                        document.getElementById('rating-value').innerHTML = val+'/10';
-                                        document.getElementById('rating').value = val;
-                                    })
-                                })
-                                Array.from(document.getElementsByClassName('ti-star')).forEach(function (node) {
-                                    node.addEventListener('click', function() {
-                                        let val = parseInt(node.getAttribute('id'))
-                                        // adding class
-                                        for (var i=1; i<=val; i++) {
-                                            document.getElementById(i).classList.add('text-lc-warning');
-                                        }
-                                        // removing class
-                                        for (var i=val + 1; i<=10; i++) {
-                                            document.getElementById(i).classList.remove('text-lc-warning');
-                                        }
-                                        document.getElementById('rating-value').innerHTML = val+'/10';
-                                        document.getElementById('rating').value = val;
-                                    });
-                                });
-                            </script>
                         </div>
                         <div class="col-12 col-lg-4">
-                            <span class="ml-3 border p-2 rounded"> Click stars to rate </span>
+                            <span id="clear-rating" class="ml-3 border p-2 rounded"> {{ $rating > 0 ? 'Clear rating' : 'Click stars to rate' }} </span>
                         </div>
+
+                        <script>
+                            const ratings = <?php echo json_encode($ratings) ?>;
+                            const ratingInput = document.getElementById('rating')
+                            const ratingUIValue = document.getElementById('rating-value')
+                            const ratingLabel = document.getElementById('clear-rating');
+
+                            Array.from(document.getElementsByClassName('rating-star')).forEach(function(node) {
+                                node.addEventListener('mouseover', function() {
+                                    let val = parseInt(node.getAttribute('id'))
+                                    // adding class
+                                    for (var i=1; i<=val; i++) {
+                                        document.getElementById(i).classList.add('text-lc-warning');
+                                    }
+                                    // removing class
+                                    for (var i=val + 1; i<=ratings.length; i++) {
+                                        document.getElementById(i).classList.remove('text-lc-warning');
+                                    }
+                                    ratingUIValue.textContent = val+'/'+ratings.length;
+                                })
+                                node.addEventListener('mouseleave', function() {
+                                    let val = parseInt(ratingInput.value)
+                                    // adding class
+                                    for (var i=1; i<=val; i++) {
+                                        document.getElementById(i).classList.add('text-lc-warning');
+                                    }
+                                    // removing class
+                                    for (var i=val + 1; i<=ratings.length; i++) {
+                                        document.getElementById(i).classList.remove('text-lc-warning');
+                                    }
+                                    ratingUIValue.textContent = val+'/'+ratings.length;
+                                    ratingInput.value = val;
+                                })
+                            })
+                            Array.from(document.getElementsByClassName('rating-star')).forEach(function (node) {
+                                node.addEventListener('click', function() {
+                                    let val = parseInt(node.getAttribute('id'))
+                                    ratingLabel.textContent = 'Clear rating'
+                                    // adding class
+                                    for (var i=1; i<=val; i++) {
+                                        document.getElementById(i).classList.add('text-lc-warning');
+                                    }
+                                    // removing class
+                                    for (var i=val + 1; i<=ratings.length; i++) {
+                                        document.getElementById(i).classList.remove('text-lc-warning');
+                                    }
+                                    ratingUIValue.textContent = val+'/'+ratings.length;
+                                    ratingInput.value = val;
+                                });
+                            });
+                            // Clear rating
+                            ratingLabel.addEventListener('click', function () {
+                                ratingInput.value = 0
+                                ratingUIValue.textContent = '0/'+ratings.length;
+                                Array.from(document.getElementsByClassName('rating-star')).forEach(function(node) {
+                                    node.classList.remove('text-lc-warning')
+                                })
+                                this.textContent = 'Click stars to rate'
+
+                            })
+                        </script>
                     </div>
                 </p>
                 <hr >
