@@ -27,21 +27,12 @@
         </div>
         <div class="col-md-9 col-lg-10 mt-3">
             <h4 class="mb-1">{{ $review->title }}</h4>
-            @include('/posts/reviews/components/review-stars')
+            @include('/reviews/components/review-stars')
             <p class="mb-0">{!! $review->content !!}</p>
         </div>
         @if(Auth::user() && $review->user_id == Auth::user()->id)
         @if($review->published == 'unapproved')
-        <div class="col-12 mt-3">
-            <div class="row">
-                <div class="col-12 col-md-9">
-                    <div class="alert alert-info"><strong>Info: </strong>Your review is awaiting moderation. In the mean time you can edit where necessary.</div>
-                </div>
-                <div class="col-12 col-md-3">
-                <a class="btn btn-sm main-outline-btn" href="{{ url('add-a-review/'.$review->post_id) }}">Edit my review</a>
-                </div>
-            </div>
-        </div>
+        @include('/reviews/components/notify-unapproved')
         @endif
         @endif
         @endforeach

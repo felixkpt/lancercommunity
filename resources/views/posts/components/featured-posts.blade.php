@@ -11,7 +11,7 @@
     <div class="d-flex">
         <a class="text-dark" href="{{ url('company/'.$item->slug) }}">
             <?php $post = $item ?>
-            @include('/posts/components/stars-only')
+            @include('/reviews/components/stars-only')
             <i class="ti-plus"></i>
         </a>
     </div>
