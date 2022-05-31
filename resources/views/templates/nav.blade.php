@@ -49,7 +49,7 @@
                     <li>
                         <a class="dropdown-item" href="{{ url('profile/'.Auth::user()->slug) }}">Profile</a>
                     </li>
-                    @if(Auth::user()->can('role-list'))
+                    @if(Auth::user()->role('Admin'))
                     <li>
                         <a class="dropdown-item" href="{{ url('admin') }}">Dashboard</a>
                     </li>
@@ -63,7 +63,7 @@
                                     box-shadow: none;
                                 }
                             </style>
-                            <button class="dropdown-item logout btn btn-link" style="focus:0">Logout</button>
+                            <button class="dropdown-item logout btn btn-link">Logout</button>
                         </form>
                     </li>
                 </ul>
