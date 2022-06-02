@@ -49,7 +49,7 @@
                     <li>
                         <a class="dropdown-item" href="{{ url('profile/'.Auth::user()->slug) }}">Profile</a>
                     </li>
-                    @if(Auth::user()->role('Admin'))
+                    @if(Auth::user()->hasRole('Admin'))
                     <li>
                         <a class="dropdown-item" href="{{ url('admin') }}">Dashboard</a>
                     </li>

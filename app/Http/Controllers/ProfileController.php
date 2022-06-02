@@ -28,7 +28,6 @@ class ProfileController extends Controller
             $reviews = Review::where([['published', 'published'], ['user_id', $user->id]])->whereHas('post', function($q) use($user) {
                 $q->where('reviews.user_id', $user->id);
             })->orderBy('updated_at', 'desc')->paginate(10);
-    
         }
         
         $title = 'Reviews by '.$user->name.' ('.$reviews->total().')';
