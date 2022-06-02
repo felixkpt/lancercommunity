@@ -9,14 +9,14 @@ use Illuminate\Support\Str;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class UserSeeder extends Seeder
+class PermissionSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      *
      * @return void
      */
-    public function run($counts = 5)
+    public function run($counts = 2)
     {
     
         for($i=0; $i<$counts; $i++) {
