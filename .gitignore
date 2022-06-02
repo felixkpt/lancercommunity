@@ -12,5 +12,5 @@ npm-debug.log
 yarn-error.log
 /.idea
 /.vscode
-sacco_key.pem
+lancer2.pem
 /storage/*.index
