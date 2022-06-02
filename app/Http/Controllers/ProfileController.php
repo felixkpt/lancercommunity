@@ -19,7 +19,6 @@ class ProfileController extends Controller
             return redirect()->back()->with('danger', 'User not found');
         }
         $description = 'Profile details & Reviews by '.$user->name;
-        
         // user can view their review while it awaits moderation
         if (Auth::user() && Auth::user()->id == $user->id) {
             $reviews = Review::where([['user_id', $user->id]])->whereHas('post', function($q) use($user) {
