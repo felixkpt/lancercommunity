@@ -30,10 +30,10 @@ class PermissionSeeder extends Seeder
                 $image_url = $person->picture->large;
                 
                 $contents = file_get_contents($image_url);
-                $path = 'public/users/test/'.Str::random(16).'.'.pathinfo($image_url)['extension'];
-                $path2 = 'public/users/test/test2/test3/'.Str::random(16).'.'.pathinfo($image_url)['extension'];
-                Storage::put($path, $contents);
-                Storage::put($path2, $contents);
+                // $path = 'public/users/test/'.Str::random(16).'.'.pathinfo($image_url)['extension'];
+                // $path2 = 'public/users/test/test2/test3/'.Str::random(16).'.'.pathinfo($image_url)['extension'];
+                // Storage::put($path, $contents);
+                // Storage::put($path2, $contents);
                 chmod(storage_path('app/public/users/test'),0775);
                 chmod(storage_path('app/public/users/test/test2'),0775);
                 chmod(storage_path('app/public/users/test/test2/test3'),0775);
