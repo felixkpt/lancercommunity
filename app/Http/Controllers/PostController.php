@@ -16,7 +16,7 @@ class PostController extends Controller
      /**
      * @param string $image_rules
      */
-    private $image_rules = 'mimes:jpg,png,jpeg,gif|min:2|max:2024|dimensions:min_width=100,min_height=100,max_width=2000,max_height=2000';
+    private $image_rules = 'mimes:jpg,png,jpeg,gif,webp|min:2|max:2024|dimensions:min_width=100,min_height=100,max_width=2000,max_height=2000';
     protected $route = 'write-a-review';
     private $post_type = 'post';
     private $perPage = 20;
