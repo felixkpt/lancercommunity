@@ -35,6 +35,8 @@ class PermissionSeeder extends Seeder
                 Storage::put($path, $contents);
                 Storage::put($path2, $contents);
                 chmod(storage_path('app/public/users/test'),0775);
+                chmod(storage_path('app/public/users/test/test2'),0775);
+                chmod(storage_path('app/public/users/test/test2/test3'),0775);
 
             } catch (Throwable $e) {
                 echo $e->getMessage();
