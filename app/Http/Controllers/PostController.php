@@ -210,7 +210,7 @@ class PostController extends Controller
                 
                 $path = $file->store($dir);
                 chmod(storage_path('app/public/'.date('Y')),0775);
-                chmod(storage_path('public/'.date('Y').'/'.date('m')),0775);
+                chmod(storage_path('app/public/'.date('Y').'/'.date('m')),0775);
                 $path = preg_replace('#public/#', 'uploads/', $path);
 
                 $url = asset($path);
