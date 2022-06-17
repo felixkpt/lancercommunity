@@ -1,7 +1,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
-    <title>Fiverr Review - {{ \Site::name() }}</title>
+    <title>{{ $title }}</title>
+    <meta name="description" content="{{ $description }}"/>
     <link rel="icon" href="{{ url('') }}favicon.png">
     <link href="{{ asset('') }}css/style.css" rel="stylesheet">
     <link href="{{ asset('') }}css/themify-icons/themify-icons.css" rel="stylesheet">

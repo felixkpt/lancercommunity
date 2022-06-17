@@ -149,7 +149,8 @@ class PostController extends Controller
      */
     public function writePost() {
         $title = 'Write a review';
-        return view('posts/create', ['route' => $this->route.'.store', 'method' => 'post', 'title' => $title]);
+        $description = 'Review a freelancing company, Write a review post';
+        return view('posts/create', ['route' => $this->route.'.store', 'method' => 'post', 'title' => $title, 'description' => $description]);
     }
 
     /**
