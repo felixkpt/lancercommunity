@@ -112,8 +112,8 @@ class PostController extends Controller
             $totals = 0;
             foreach($reviews as $review) {
                 $rat = $review->rating;
-                if (Reviews::stars() ? $rat : Reviews::stars()) {
-                    Review::find($review->id)->update();
+                if ($rat > Reviews::stars()) {
+                    Review::find($review->id)->update(['rating' => Reviews::stars()]);
                 }
                 $totals += $rat;
             }
