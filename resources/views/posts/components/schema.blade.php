@@ -1,8 +1,8 @@
 <?php 
 
-$name = \Site::name();
+$name = \SiteInfo::name();
 $legalName = $name.' Ltd';
-$description = \Site::description();
+$description = \SiteInfo::description();
 $sameAs = [
     
     'https://www.facebook.com/#',

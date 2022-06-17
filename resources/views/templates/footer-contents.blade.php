@@ -4,7 +4,7 @@
             <div class="row">
                 <div class="col-md-3">
                     <h5><b>Company</b></h5>
-                    <p>{{ \Site::description() }}</p>
+                    <p>{{ \SiteInfo::description() }}</p>
                 </div>
                 <div class="col-6 col-md-3">
                     <h5><b>Resources</b></h5>
@@ -40,7 +40,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-6 my-3 my-md-0">
-                    <p class="mb-0">© {{ date('Y') }} {{ \Site::name() }}. All Rights Reserved</p>
+                    <p class="mb-0">© {{ date('Y') }} {{ \SiteInfo::name() }}. All Rights Reserved</p>
                 </div>
                 <div class="col-md-6 text-md-right my-3 my-md-0">
                     <p class="mb-0">

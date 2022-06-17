@@ -7,6 +7,7 @@ use App\Models\Option;
 use App\Models\Post;
 use App\Models\Review;
 use Illuminate\Http\Request;
+use SiteInfo;
 
 class HomeController extends Controller
 {
@@ -16,9 +17,9 @@ class HomeController extends Controller
      */
     public function index() {
         $option = Option::where('name', 'show_in_homepage')->first();
-        
-        $title = \Site::title();
-        $description = \Site::description();
+ 
+        $title = SiteInfo::title();
+        $description = SiteInfo::description();
        
         $post = null;
         if ($option) {

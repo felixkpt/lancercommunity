@@ -15,7 +15,9 @@ class PasswordResetLinkController extends Controller
      */
     public function create()
     {
-        $data = ['title' => 'Forgot password', 'description' => 'Forgot password', 'hide_sidebar' => true, 'hide_notification' => true];
+        $title = 'Forgot password | '.\SiteInfo::name();
+        $description = 'Forgot password, reset password | '.\SiteInfo::name();
+        $data = ['title' => $title, 'description' => $description, 'hide_sidebar' => true, 'hide_notification' => true];
         return view('auth.forgot-password', $data);
     }
 

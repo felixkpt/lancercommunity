@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Facade;
+use App\Information\SiteInfoFacade;
 
 return [
 
@@ -181,6 +182,8 @@ return [
         TeamTNT\Scout\TNTSearchScoutServiceProvider::class,
         Laravel\Scout\ScoutServiceProvider::class,
 
+        App\Providers\SiteInfoServiceProvider::class,
+
     ],
 
     /*
@@ -195,7 +198,7 @@ return [
     */
 
     'aliases' => Facade::defaultAliases()->merge([
-        'Site' => App\Services\Information\SiteFacade::class,
+        'SiteInfo' => App\Information\SiteInfo::class,
         // 'ExampleClass' => App\Example\ExampleClass::class,
     ])->toArray(),
 
