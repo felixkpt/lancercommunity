@@ -18,6 +18,17 @@ $context = ["@context" => "https://schema.org"];
 $graph = ["@graph" => []];
 
 // 1st Item in graph array
+$Organization = [
+"@type" => "Organization",
+"@id" => url('')."#/schema/Organization/1",
+"name" => $name,
+"legalName" => $legalName,
+"url" => url(''),
+"description" => $description,
+"logo" => ["@id" => $logo],
+"email" => $email,
+];
+
 $PostalAddress = [
         "@type" => "PostalAddress",
         "@id" => url('').("/#schema/PostalAddress/DK"),
@@ -26,6 +37,9 @@ $PostalAddress = [
         "addressCountry" => "US",
         "postalCode" => "79311 Hale County"
 ];
+
+$Organization['PostalAddress'] = $PostalAddress;
+
 
 // 2nd Item in graph array
 $ImageObject = [
@@ -71,7 +85,6 @@ $WebPage = [
 $BreadcrumbList = [
     
 ];
-
 // 6rd Item in graph array 
 $LocalBusiness = [
     "@type" => "LocalBusiness",
@@ -80,6 +93,7 @@ $LocalBusiness = [
     "sameAs" => $post->company_url,
     "name" => $post->company_name,
     "description" => Str::limit(strip_tags($post->content->content), 120),
+    "author" => $post->author[0]->name,
     "email" => "partners@".$post->company_url,
     "telephone" => "866-262-4478",
     "address" => [ "@type" => "PostalAddress", "streetAddress" => "2625 Augustine Dr., Suite 601", "addressLocality" => "Santa Clara", "addressCountry" => "US", "postalCode" => "95054" ],
@@ -113,7 +127,7 @@ foreach ($reviews as $review) {
     
 }
 
-$graph["@graph"] = [$PostalAddress, $ImageObject, $WebSite, $WebPage, $BreadcrumbList, $LocalBusiness, $Review];
+$graph["@graph"] = [$Organization, $ImageObject, $WebSite, $WebPage, $BreadcrumbList, $LocalBusiness, $Review];
 
 // $graph["@graph"] = [$PostalAddress, $ImageObject];
 
