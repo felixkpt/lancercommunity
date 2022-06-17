@@ -160,8 +160,9 @@ class PostController extends Controller
     public function editPost($post_id) {
         $post = Post::findOrFail($post_id);
         $title = 'Edit a review';
+        $description = 'Edit existing review';
         
-        return view('posts/edit', ['route' => $this->route.'.update', 'method' => 'patch', 'post' => $post, 'title' => $title]);
+        return view('posts/edit', ['route' => $this->route.'.update', 'method' => 'patch', 'post' => $post, 'title' => $title, 'description' => $description]);
     }
 
     /**
