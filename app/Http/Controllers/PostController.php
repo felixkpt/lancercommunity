@@ -107,7 +107,7 @@ class PostController extends Controller
 
         $ct = count($reviews);
         $rating = 0;
-        if ($ct > 0 || 1 > 0) {
+        if ($ct > 0) {
 
             $totals = 0;
             foreach($reviews as $review) {
@@ -123,10 +123,10 @@ class PostController extends Controller
             $rating = $parts[0].$decimal;
         }
 
-        // if ($post->reviews != $ct && $post->rating != $rating) {
+        if ($post->reviews != $ct && $post->rating != $rating) {
             $post = Post::find($post_id);
             $post->update(['reviews' => $ct, 'rating' => $rating,]);
-        // }
+        }
 
         return $post;
 
