@@ -100,8 +100,9 @@ $LocalBusiness = [
     "image" => [ "@id" => url('').("/#schema/ImageObject/".$post->company_name) ],
     "aggregateRating" => [ "@type" => "AggregateRating", "bestRating" => "5", "worstRating" => "1", "ratingValue" => $post->rating, "reviewCount" => $post->reviews ],
     "review" => [
-        [ "@id" => url('').("/#schema/Review/".$post->company_name."/6206a6d54f921071539ada84") ],
-        [ "@id" => url('').("/#schema/Review/".$post->company_name."/6206a6d54f921071539ada84") ]
+        array_map(function() use ($post) {
+            return [ "@id" => url('').("/#schema/Review/".$post->company_name."/6206a6d54f921071539ada84")];
+        }, $reviews->toArray())
     ]
 ];
 
