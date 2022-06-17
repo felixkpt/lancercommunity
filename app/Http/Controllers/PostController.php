@@ -123,10 +123,10 @@ class PostController extends Controller
             $rating = $parts[0].$decimal;
         }
 
-        if ($post->reviews != $ct && $post->rating != $rating) {
+        // if ($post->reviews != $ct && $post->rating != $rating) {
             $post = Post::find($post_id);
             $post->update(['reviews' => $ct, 'rating' => $rating,]);
-        }
+        // }
 
         return $post;
 
