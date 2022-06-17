@@ -1,0 +1,106 @@
+<script type="application/ld+json" data-business-unit-json-ld="true">
+    {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "Organization",
+                "@id": "https://www.trustpilot.com/#/schema/Organization/1",
+                "name": "Trustpilot",
+                "legalName": "Trustpilot A/S",
+                "url": "https://www.trustpilot.com",
+                "description": "Read reviews. Write reviews. Find companies.",
+                "logo": { "@id": "https://www.trustpilot.com/#/schema/ImageObject/Logo/1" },
+                "email": "support@trustpilot.com",
+                "address": {
+                    "@type": "PostalAddress",
+                    "@id": "https://www.trustpilot.com/#/schema/PostalAddress/DK",
+                    "streetAddress": "Pilestræde 58, 5th floor",
+                    "addressLocality": "Copenhagen",
+                    "addressCountry": "DK",
+                    "postalCode": "1112 København"
+                }
+            },
+            {
+                "@type": "ImageObject",
+                "@id": "https://www.trustpilot.com/#/schema/ImageObject/Logo/1",
+                "url": "https://cdn.trustpilot.net/brand-assets/1.5.0/favicons/android-chrome-512x512.png",
+                "contentUrl": "https://cdn.trustpilot.net/brand-assets/1.5.0/favicons/android-chrome-512x512.png",
+                "width": { "@type": "QuantitativeValue", "value": 512, "unitCode": "E37", "unitText": "pixel" },
+                "height": { "@type": "QuantitativeValue", "value": 512, "unitCode": "E37", "unitText": "pixel" },
+                "caption": "Trustpilot Logo",
+                "name": "Trustpilot"
+            },
+            {
+                "@type": "WebSite",
+                "@id": "https://www.trustpilot.com/#/schema/WebSite/1",
+                "url": "https://www.trustpilot.com/",
+                "name": "Trustpilot (en-US)",
+                "description": "We're all about consumer reviews. Get the real inside story from shoppers like you. Read, write and share reviews on Trustpilot today.",
+                "publisher": { "@id": "https://www.trustpilot.com/#/schema/Organization/1" },
+                "copyrightHolder": { "@id": "https://www.trustpilot.com/#/schema/Organization/1" },
+                "potentialAction": [{ "@type": "SearchAction", "target": { "@type": "EntryPoint", "urlTemplate": "https://www.trustpilot.com/search?query={search_term_string}" }, "query-input": "required name=search_term_string" }],
+                "inLanguage": "en-US"
+            },
+            {
+                "@type": "WebPage",
+                "@id": "https://www.trustpilot.com/review/upwork.com",
+                "url": "https://www.trustpilot.com/review/upwork.com",
+                "name": "Upwork Reviews",
+                "description": "Do you agree with Upwork's star rating? Check out what 8,243 people have written so far, and share your own experience.",
+                "isPartOf": { "@id": "https://www.trustpilot.com/#/schema/WebSite/1" },
+                "inLanguage": "en-US",
+                "about": { "@id": "https://www.trustpilot.com/#/schema/Organization/upwork.com" },
+                "mainEntity": { "@id": "https://www.trustpilot.com/#/schema/Organization/upwork.com" },
+                "primaryImageOfPage": { "@id": "https://www.trustpilot.com/#/schema/ImageObject/upwork.com" },
+                "hasPart": { "@id": "https://www.trustpilot.com/#/schema/DataSet/upwork.com/1" }
+            },
+            {
+                "@type": "ImageObject",
+                "@id": "https://www.trustpilot.com/#/schema/ImageObject/upwork.com",
+                "url": "https://s3-eu-west-1.amazonaws.com/tpd/logos/5571d8bc0000ff00057ff821/0x0.png",
+                "contentUrl": "https://s3-eu-west-1.amazonaws.com/tpd/logos/5571d8bc0000ff00057ff821/0x0.png"
+            },
+            {
+                "@type": "LocalBusiness",
+                "@id": "https://www.trustpilot.com/#/schema/Organization/upwork.com",
+                "url": "https://www.trustpilot.com/review/upwork.com",
+                "sameAs": "https://www.upwork.com/",
+                "name": "Upwork",
+                "description": "Our vision is simple: we want to connect businesses with great talent to work without limits and our mission is to create economic opportunities so people around the world can have better lives.",
+                "email": "partners@upwork.com",
+                "telephone": "866-262-4478",
+                "address": { "@type": "PostalAddress", "streetAddress": "2625 Augustine Dr., Suite 601", "addressLocality": "Santa Clara", "addressCountry": "US", "postalCode": "95054" },
+                "image": { "@id": "https://www.trustpilot.com/#/schema/ImageObject/upwork.com" },
+                "aggregateRating": { "@type": "AggregateRating", "bestRating": "5", "worstRating": "1", "ratingValue": "4.4", "reviewCount": "8243" },
+                "review": [
+                    { "@id": "https://www.trustpilot.com/#/schema/Review/upwork.com/62a973720031539b61400ffb" },
+                    { "@id": "https://www.trustpilot.com/#/schema/Review/upwork.com/62a94e516d54f92107163625" }
+                ]
+            },
+            {
+                "@type": "Review",
+                "@id": "https://www.trustpilot.com/#/schema/Review/upwork.com/62a973720031539b61400ffb",
+                "itemReviewed": { "@id": "https://www.trustpilot.com/#/schema/Organization/upwork.com" },
+                "author": { "@type": "Person", "name": "Азат Есенов", "url": "https://www.trustpilot.com/users/62a9734a3109880011802f9b/" },
+                "datePublished": "2022-06-15T07:51:46.000Z",
+                "headline": "Upwork is top channel for marketing and sales for IT consulting and outsourcing companies",
+                "reviewBody": "It's a big pleasure to for on Upwork.com. The main reason it's the only marketplace we use is Upwork Agencies. It allows us to build a team of specialists and freelancers and manage contracts and incoming payments from one place. I strongly recommend Upwork for beginners and world-class experts to find customers and build the business!Best regards, Azat.",
+                "reviewRating": { "@type": "Rating", "bestRating": "5", "worstRating": "1", "ratingValue": "5" },
+                "publisher": { "@id": "https://www.trustpilot.com/#/schema/Organization/1" },
+                "inLanguage": "en"
+            },
+            {
+                "@type": "Review",
+                "@id": "https://www.trustpilot.com/#/schema/Review/upwork.com/62a94e516d54f92107163625",
+                "itemReviewed": { "@id": "https://www.trustpilot.com/#/schema/Organization/upwork.com" },
+                "author": { "@type": "Person", "name": "सिराजु ददीन सलमानी", "url": "https://www.trustpilot.com/users/62a94e4101ef0a001194932b/" },
+                "datePublished": "2022-06-15T05:13:22.000Z",
+                "headline": "the platform is very good to work ok…",
+                "reviewBody": "the platform is very good to work ok but this platform support most of the client if there is any kind of issue Upwork only help client, not the freelancer and if any problem or problem then the profile of both Or the profile of the freelancer is suspended, then his money goes back to the light, I did not like it, everything else is fineAnd the new clients who come here, after getting a lot of scams done, they work as hourly and then they do not have money in the profile, then Upwork holds their profile, holds the contract and who The freelancer earns the rest, that money also goes back to him, this is not good, everything else is right, new client, whoever comes here is mostly scam.",
+                "reviewRating": { "@type": "Rating", "bestRating": "5", "worstRating": "1", "ratingValue": "4" },
+                "publisher": { "@id": "https://www.trustpilot.com/#/schema/Organization/1" },
+                "inLanguage": "en"
+            }
+        ]
+    }
+</script>
