@@ -11,6 +11,7 @@
     <link href="{{ asset('') }}css/chunk-vendors.f8cd87c4.css" rel="stylesheet">
     <link href="{{ asset('') }}css/app.bdb0a3d3.css" rel="stylesheet">
     <script src="{{ asset('') }}js/bootstrap.min.js"></script>
+    <script src="{{ asset('js/script.js?v=').Str::random(10) }}"></script>
     @if (Route::current()->getName() == 'posts.show')
     @include('/posts/components/schema')
     @endif

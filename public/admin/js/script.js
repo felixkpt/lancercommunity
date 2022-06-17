@@ -12,3 +12,15 @@ e.target.style.border = '1px solid gray'
 })
 
 }
+
+function wordCounter(textarea, display, characters = false) {
+    textarea = document.querySelector(textarea);
+    textarea.addEventListener("input", event => {
+        const target = event.currentTarget;
+        const currentLength = characters ? target.value.split('').length : target.value.split(' ').length;
+        res = document.createElement('span')
+        res.innerHTML = currentLength;
+        document.querySelector(display).innerHTML = ''
+        document.querySelector(display).append(res)
+    });
+}

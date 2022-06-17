@@ -1,8 +1,8 @@
 <?php 
-$post_cats = isset($post) ? array_column($post->categories->toArray(), 'id') : [];
+$post_cats =  old('categories') ?: (isset($post) ? array_column($post->categories->toArray(), 'id') : []);
 $categories = App\Models\Category::where('parent', '=', 0)->get() ?>
 <div id="category-all" class="tabs-panel mx-1">
-    <div class="bg-gray-50 min-h-screen px-1">
+    <div class="px-1">
         <h3 class="text-xl">Choose category</h3>
         <ul>
             @foreach($categories as $cat)
