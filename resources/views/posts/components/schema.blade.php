@@ -99,12 +99,12 @@ $LocalBusiness = [
     "address" => [ "@type" => "PostalAddress", "streetAddress" => "2625 Augustine Dr., Suite 601", "addressLocality" => "Santa Clara", "addressCountry" => "US", "postalCode" => "95054" ],
     "image" => [ "@id" => url('').("/#schema/ImageObject/".$post->company_name) ],
     "aggregateRating" => [ "@type" => "AggregateRating", "bestRating" => "5", "worstRating" => "1", "ratingValue" => $post->rating, "reviewCount" => $post->reviews ],
-    "review" => [
+    "review" => 
         array_map(function($review) use ($post) {
             // return ($review['id']);
             return [ "@id" => url('').("/#schema/Review/".$post->company_name."/".$review['id'])];;
         }, $reviews->toArray()['data'])
-    ]
+    
 ];
 
 // 7rd Item in graph array 
