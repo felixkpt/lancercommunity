@@ -62,7 +62,7 @@ $WebSite = [
     "description" => $description,
     "publisher" => [ "@id" => url('').("/#schema/Organization/1") ],
     "copyrightHolder" => [ "@id" => url('').("/#schema/Organization/1") ],
-    "potentialAction" => [[ "@type" => "SearchAction", "target" => [ "@type" => "EntryPoint", "urlTemplate" => url("search?query=[search_term_string]") ], "query-input" => "required name=search_term_string" ]],
+    // "potentialAction" => [[ "@type" => "SearchAction", "target" => [ "@type" => "EntryPoint", "urlTemplate" => url("search?query=[search_term_string]") ], "query-input" => "required name=search_term_string" ]],
     "inLanguage" => "en-US"
 ];
 
@@ -140,5 +140,5 @@ $jsonLd
 .'</script>';
 
 echo $echo;
-die;
+// die;
 ?>
