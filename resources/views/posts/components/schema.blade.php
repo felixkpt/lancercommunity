@@ -29,7 +29,7 @@ $Organization = [
 "email" => $email,
 ];
 
-$PostalAddress = [
+$address = [
         "@type" => "PostalAddress",
         "@id" => url('').("/#schema/PostalAddress/DK"),
         "streetAddress" => "Texas 18, 5th floor",
@@ -38,7 +38,7 @@ $PostalAddress = [
         "postalCode" => "79311 Hale County"
 ];
 
-$Organization['PostalAddress'] = $PostalAddress;
+$Organization['address'] = $address;
 
 
 // 2nd Item in graph array
