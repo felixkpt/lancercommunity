@@ -111,7 +111,11 @@ class PostController extends Controller
 
             $totals = 0;
             foreach($reviews as $review) {
-                $totals += $review->rating <= Reviews::stars() ? $review->rating : Reviews::stars();
+                $rat = $review->rating;
+                if (Reviews::stars() ? $rat : Reviews::stars()) {
+                    Review::find($review->id)->update();
+                }
+                $totals += $rat;
             }
             $rating = $totals / $ct;
             $parts = explode('.', $rating);
