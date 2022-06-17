@@ -1,8 +1,10 @@
 <?php 
+use App\Settings\SiteInfo;
+use Illuminate\Support\Str;
 
-$name = \SiteInfo::name();
+$name = SiteInfo::name();
 $legalName = $name.' Ltd';
-$description = \SiteInfo::description();
+$description = SiteInfo::description();
 $sameAs = [
     
     'https://www.facebook.com/#',

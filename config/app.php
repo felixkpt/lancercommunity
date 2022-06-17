@@ -198,7 +198,7 @@ return [
     */
 
     'aliases' => Facade::defaultAliases()->merge([
-        'SiteInfo' => App\Information\SiteInfo::class,
+        'SiteInfo' => App\Settings\SiteInfo::class,
         // 'ExampleClass' => App\Example\ExampleClass::class,
     ])->toArray(),
 

@@ -7,7 +7,7 @@ use App\Models\Option;
 use App\Models\Post;
 use App\Models\Review;
 use Illuminate\Http\Request;
-use SiteInfo;
+use App\Settings\SiteInfo;
 
 class HomeController extends Controller
 {

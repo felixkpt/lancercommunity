@@ -19,8 +19,8 @@ class AuthenticatedSessionController extends Controller
      */
     public function create()
     {
-        $title = 'Login | '.\SiteInfo::name();
-        $description = 'Login, Sign in | '.\SiteInfo::name();
+        $title = 'Login | '.SiteInfo::name();
+        $description = 'Login, Sign in | '.SiteInfo::name();
         $data = ['title' => $title, 'description' => $description, 'hide_sidebar' => true, 'hide_notification' => true];
         return view('auth.login', $data);
     }

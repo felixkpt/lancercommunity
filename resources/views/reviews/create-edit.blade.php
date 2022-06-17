@@ -3,7 +3,8 @@
     <div class="row justify-content-center p-1 p-md-3">
         <div class="card px-4 text-start">
             <?php 
-            $ratings = range(1,10);
+            $stars_count = App\Settings\Reviews::stars();
+            $ratings = range(1, $stars_count);
             $rating = old('rating') ?? @$review->rating;
             ?>
             @include('components/notification')

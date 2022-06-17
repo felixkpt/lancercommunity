@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
+use App\Settings\SiteInfo;
 
 class RegisteredUserController extends Controller
 {
@@ -21,8 +22,8 @@ class RegisteredUserController extends Controller
      */
     public function create()
     {
-        $title = 'Register | '.\SiteInfo::name();
-        $description = 'Register, Sign up | '.\SiteInfo::name();
+        $title = 'Register | '.SiteInfo::name();
+        $description = 'Register, Sign up | '.SiteInfo::name();
         $data = ['title' => $title, 'description' => $description, 'hide_sidebar' => true, 'hide_notification' => true];
         return view('auth.register', $data);
     }

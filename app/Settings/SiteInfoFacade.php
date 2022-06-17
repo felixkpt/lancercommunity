@@ -1,5 +1,5 @@
 <?php 
-namespace App\Information;
+namespace App\Settings;
 
 use Illuminate\Support\Facades\Facade;
 

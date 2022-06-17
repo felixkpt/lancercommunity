@@ -1,11 +1,11 @@
 <?php
-namespace App\Information;
+namespace App\Settings;
 use Illuminate\Support\Facades\Config;
 class SiteInfo {
 
     public static function config($key)
     {
-        return Config::get('siteinfo')[$key];
+        return Config::get('settings')['siteInfo'][$key];
     }
 
     public static function name() {
