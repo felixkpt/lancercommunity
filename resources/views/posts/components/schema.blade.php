@@ -125,7 +125,7 @@ foreach ($reviews as $review) {
             "inLanguage" => "en"
         ];
 
-        $Review[] = $item;
+        $Review = array_merge($Review, $item);
     
 }
 
