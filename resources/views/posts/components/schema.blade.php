@@ -102,7 +102,7 @@ $LocalBusiness = [
     "review" => 
         array_map(function($review) use ($post) {
             // return ($review['id']);
-            return [ "@id" => url('').("/#schema/Review/".$post->company_name."/".$review['id'])];;
+            return [ "@id" => url('').("/#schema/Review/".$post->company_name."/review/".$review['id'])];;
         }, $reviews->toArray()['data'])
     
 ];
@@ -114,7 +114,7 @@ foreach ($reviews as $review) {
     $item =
         [
             "@type" => "Review",
-            "@id" => url('').("/#schema/Review/" . $post->company_name . "/39ad62a8406a6d54f9210715"),
+            "@id" => url('').("/#schema/Review/" . $post->company_name . "/review/".$review->id),
             "itemReviewed" => ["@id" => url('').("/#schema/Organization/" . $post->company_name)],
             "author" => ["@type" => "Person", "name" => $review->author->name, "url" => url('profile/'.$review->author->slug)],
             "datePublished" => $review->created_at,
