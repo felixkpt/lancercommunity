@@ -9,7 +9,7 @@ $sameAs = [
     
     'https://www.facebook.com/#',
 ];
-$logo = [ '@id' => url('#/schema/ImageObject/Logo/1')];
+$logo = [ '@id' => url('').('#/schema/ImageObject/Logo/1')];
 $email = 'support@lancercommunity.com';
 $permalink = url('companies/'.$post->slug);
 
