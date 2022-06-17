@@ -10,7 +10,7 @@ use App\Models\Post;
 use App\Models\Review;
 use App\Models\PostContent;
 use Illuminate\Http\Request;
-
+use App\Settings\Reviews;
 
 class PostController extends Controller
 {
@@ -111,7 +111,7 @@ class PostController extends Controller
 
             $totals = 0;
             foreach($reviews as $review) {
-                $totals += $review->rating;
+                $totals += $review->rating <= Reviews::stars() ? $review->rating : Reviews::stars();
             }
             $rating = $totals / $ct;
             $parts = explode('.', $rating);

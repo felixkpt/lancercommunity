@@ -40,6 +40,7 @@ require  __DIR__.'/web/index.php';
 //Fallback/Catchall Route
 Route::fallback(function (Request $request) {
     $title = 'Oops! Nothing was found';
+    $description = 'Oops! Nothing was found';
     $view = $request->is('admin/*') ? 'admin.errors.404' : 'errors.404';
-    return view($view, compact('title'));
+    return view($view, compact('title', 'description'));
 });
