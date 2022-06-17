@@ -115,7 +115,7 @@ foreach ($reviews as $review) {
             "@id" => url('').("/#schema/Review/" . $post->company_name . "/39ad62a8406a6d54f9210715"),
             "itemReviewed" => ["@id" => url('').("/#schema/Organization/" . $post->company_name)],
             "author" => ["@type" => "Person", "name" => $review->author->name, "url" => url('profile/'.$review->author->slug)],
-            "datePublished" => $review->date_created,
+            "datePublished" => $review->created_at,
             "headline" => $review->title,
             "reviewBody" => Str::limit(strip_tags($review->content), 100),
             "reviewRating" => ["@type" => "Rating", "bestRating" => "5", "worstRating" => "1", "ratingValue" => $review->rating],
