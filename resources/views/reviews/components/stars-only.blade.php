@@ -1,6 +1,5 @@
 <?php
 $stars_count = App\Settings\Reviews::stars();
-
 $ratings = range(1, $stars_count);
 ?>
 @foreach($ratings as $rat)

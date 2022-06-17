@@ -107,7 +107,7 @@ class PostController extends Controller
 
         $ct = count($reviews);
         $rating = 0;
-        if ($ct > 0) {
+        if ($ct > 0 || 1 > 0) {
 
             $totals = 0;
             foreach($reviews as $review) {
