@@ -9,5 +9,6 @@
     </div>
     <div class="col-12 col-xl-5 text-center text-md-left">
         <span class="text-muted"> ( {{ $post->reviews }} Customer Review{{ $post->reviews > 1 ? "s" : "" }} )</span>
+        <a href="#reviews" class="pl-2 btn secondary-outline-btn btn-block">Go to reviews</a>
     </div>
 </div>

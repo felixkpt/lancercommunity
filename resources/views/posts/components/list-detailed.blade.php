@@ -6,7 +6,8 @@
                 <a href="{{ url('company/'.$post->slug) }}">
                 <div class="bg-light" style="max-width: 150px;height:140px">
                     <?php 
-                    $image = isset($post->image) ? $post->image : asset('images/default-company.png') ?>
+                    $image = isset($post->image) ? $post->image : asset('images/default-company.png');
+                     ?>
                     <img style="height: 100%;width:100%;" class="mx-auto rounded-lg" src="{{ $image }}" alt="{{ $post->company_name }} logo">
                 </div>
                 </a>
@@ -17,8 +18,8 @@
             @include('/posts/components/post-stars')
         </div>
         <div class="col-md-3 border-left">
-            <a href="{{ url('company/'.$post->slug) }}" class="btn main-btn btn-block"> Visit site <i class="ti-new-window ml-2"></i></a>
-            <a href="{{ url('company/'.$post->slug) }}#reviews" class="btn secondary-outline-btn btn-block"> Read Reviews <i class="ti-comments-smiley ml-2"></i></a>
+            <a href="{{ url('company/'.$post->company_url) }}" class="btn main-btn btn-block"> Visit site <i class="ti-new-window ml-2"></i></a>
+            <a href="{{ url('company/'.$post->slug) }}" class="btn secondary-outline-btn btn-block"> Read Reviews <i class="ti-comments-smiley ml-2"></i></a>
         </div>
     </div>
 </div>
