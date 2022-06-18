@@ -8,4 +8,7 @@
 </div>
 <div class="col-md-3">
     <a href="{{ $post->company_url }}" target="_blank" class="btn main-btn btn-block"> Visit site <i class="ti-new-window ml-2"></i></a>
+    <div>
+        <a href="#reviews" class="pl-2 btn secondary-outline-btn btn-block">Go to reviews</a>
+    </div>
 </div>
