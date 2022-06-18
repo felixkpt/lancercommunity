@@ -16,7 +16,7 @@ class MediaLibraryController extends Controller
      * @param string $image_rules
      * 
      */
-    private $image_rules = 'mimes:jpg,png,jpeg,gif';
+    private $image_rules = 'mimes:jpg,png,jpeg,gif,svg,webp';
 
     private $route = 'admin.media';
     private $perPage = 30;
