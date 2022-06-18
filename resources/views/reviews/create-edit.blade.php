@@ -27,7 +27,7 @@
                 ?>
                 <div class="mb-4">
                     <label for="review-textarea" class="mt-3">Your review (Max {{ $max_words }} words)</label>
-                    <textarea max-words="{{ $max_words }}" name="content" rows="6" class="form-control mb-2 @error('content', 'review') is-invalid @enderror">{{ old('content') ?? @$review->content }}</textarea>Words count: <span id="wordCount">{{ $content_count }}</span>
+                    <textarea max-words="{{ $max_words }}" id="review-textarea" name="content" rows="6" class="form-control mb-2 @error('content', 'review') is-invalid @enderror">{{ old('content') ?? @$review->content }}</textarea>Words count: <span id="wordCount">{{ $content_count }}</span>
                     @error('content', 'review')
                     <div class="alert alert-danger">
                         {{ $errors->review->get('content')[0] }}
@@ -35,7 +35,7 @@
                     @enderror
                 </div>
                 <script>
-                    wordCounter('[id="content"]', '#wordCount')
+                    wordCounter('[id="review-textarea"]', '#wordCount')
                 </script>
                 <p class="mb-0">
                 <h6 class="mb-2">Overall rating</h6>
