@@ -3,7 +3,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
     <title>{{ $title }}</title>
     <meta name="description" content="{{ $description }}"/>
-    <link rel="icon" href="{{ url('favicon.png') }}">
+    <link rel="icon" href="{{ url('favicon.ico') }}">
     <link href="{{ asset('') }}css/style.css" rel="stylesheet">
     <link href="{{ asset('') }}css/themify-icons/themify-icons.css" rel="stylesheet">
     <link href="{{ asset('') }}css/app.bdb0a3d3.css" rel="preload" as="style">
