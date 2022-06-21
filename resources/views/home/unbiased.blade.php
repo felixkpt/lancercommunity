@@ -1,4 +1,4 @@
-<div class="container-fluid py-3 py-lg-4 bg-white">
+<div class="container-fluid py-3 py-lg-4 bg-light">
     <div class="container">
         <div class="row">
             <div class="col-md-7 align-self-center">

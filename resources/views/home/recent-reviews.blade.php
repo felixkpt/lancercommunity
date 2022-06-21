@@ -29,7 +29,7 @@ if ($temp) {
     $reviews_segments[] = $temp;
 }
 ?>
-<div class="col-12 my-5">
+<div class="col-12 my-5 bg-white">
     <div class="col-12 px-2">
         <h2>Recent Reviews</h2>
     </div>
@@ -53,7 +53,7 @@ if ($temp) {
                 <div class="row h-100 p-4">
                     @foreach ($review_seg as $review)
                     <div class="col-12 p-2 col-md-4 h-100">
-                        <div class="p-1 bg-white rounded border border-secondary border-1 h-100 overflow-hidden">
+                        <div class="p-1 bg-light rounded border border-secondary border-1 h-100 overflow-hidden">
                             <div class="col-12 mt-3">
                                 <?php
                                 $user = App\Models\User::where('id', $review->user_id)->first();
@@ -61,12 +61,12 @@ if ($temp) {
                                 ?>
                                 <a href="{{ url('profile/'.$user->slug) }}" class="d-block">
                                     <div class="row">
-                                        <div class="col-5">
+                                        <div class="col-4">
                                             <div class="bg-light rounded-circle" style="max-width: 40px;height: 40px">
                                                 <img style="height: 100%;width:100%;" class="mx-auto rounded-circle" src="{{ $image }}" alt="{{ $user->name }} logo">
                                             </div>
                                         </div>
-                                        <div class="col-7 align-self-center">
+                                        <div class="col-8 align-self-center">
                                             <span>{{ $user->name }}</span>
                                         </div>
                                     </div>
@@ -75,7 +75,7 @@ if ($temp) {
                             <h4 class="text-center text-md-start">{{ $review->title }}</h4>
                             <?php $shorten = true ?>
                             @include('/reviews/components/review-stars')
-                            <p class="text-center text-md-start py-2 overflow-hidden">{{ Str::limit(strip_tags($review->content), 300 ) }}</p>
+                            <p class="text-center text-md-start py-2 overflow-hidden">{{ Str::limit(strip_tags($review->content), 250 ) }}</p>
                         </div>
                     </div>
                     @endforeach
@@ -104,7 +104,7 @@ if ($temp) {
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Next</span>
         </button>
-        <div class="position-relative bg-light" style="min-height:40px">
+        <div class="position-relative bg-white" style="min-height:40px">
             <div class="carousel-indicators">
                 <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
                 <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
