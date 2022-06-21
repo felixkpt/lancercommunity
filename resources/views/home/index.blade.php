@@ -1,7 +1,8 @@
 @include('/templates/header')
-@include('/components/home-slider')
-<div class="col rounded-lg">
+<div class="col-12">
+    @include('/home/home-slider')
     @include('/home/body')
+    @include('/home/recent-reviews')
     @include('/home/unbiased')
     @include('/home/top-categories')
 </div>

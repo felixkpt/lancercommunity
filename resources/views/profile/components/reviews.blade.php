@@ -17,7 +17,7 @@
             </div>
         </div>
         <div class="col-12 col-sm-9 col-lg-10 mt-3">
-            <h4 class="mb-1 text-center text-sm-left">{{ $review->title }}</h4>
+            <h4 class="mb-1 text-center text-sm-start">{{ $review->title }}</h4>
             @include('/reviews/components/review-stars')
             <div>
                 <p class="mb-0 text-center text-md-sm">{!! $review->content !!}</p>

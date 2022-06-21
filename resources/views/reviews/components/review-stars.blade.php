@@ -1,5 +1,5 @@
 <div class="row mb-2">
-    <div class="col-12 col-md-9 text-center text-md-left">
+    <div class="col-12 col-md-8 text-center text-md-start">
         @if($review->rating > 0)
         <small>
             <?php
@@ -14,7 +14,7 @@
         <small class="text-lc-warning">No rating</small>
         @endif
     </div>
-    <div class="col-12 col-md-3 text-center text-md-left">
-        <span class="text-muted"> Reviewed {{ $review->updated_at->diffForHumans() }}</span>
+    <div class="col-12 col-md-4 text-center text-md-start">
+        <span class="text-muted"> @if(!isset($shorten) || !$shorten) Reviewed @endif{{ $review->updated_at->diffForHumans() }}</span>
     </div>
 </div>

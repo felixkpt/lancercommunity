@@ -1,43 +1,27 @@
-    <div class="card pt-3 px-2 pb-2">
-        @if (Route::current()->getName() == 'posts.show')
-        @include('/posts/components/services-offered')
-        @else
-        <div>
-            <h4>Recently reviewed</h4>
-            <ul class="list-unstyled">
-                @foreach(App\Models\Post::where('post_type', 'post')->where('published', 'published')->latest()->limit(5)->get() as $post_temp)
-                <li class="py-1 bg-light my-1">
-                    <a class="d-block" style="font-size:16px;
-    white-space: nowrap;
-    font-size: 16px;
-    text-overflow: ellipsis;
-    overflow: hidden;" href="{{ url('company/'.$post_temp->slug) }}">
-                        <span class="mx-2" style="width:30px;height:30px;display:inline-block">
-                            <img class="rounded-lg" style="width:30px;height:30px" src="{{ isset($post_temp->image) ? $post_temp->image : asset('images/default-company.png') }}">
-                        </span>{{ $post_temp->company_name }}
-                    </a>
-                </li>
-                @endforeach
-            </ul>
+    <div class="card pt-3 px-2 pb-2 overflow-hidden">
+        <div class="col-12">
+            @if (Route::current()->getName() == 'posts.show')
+            @include('/posts/components/services-offered')
+            @else
+            <div>
+                <h4>Follow us on social media</h4>
+                <div class="fb-page" data-href="https://web.facebook.com/LancerCommunity" data-tabs="timeline" data-width="" data-height="" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://web.facebook.com/LancerCommunity" class="fb-xfbml-parse-ignore"><a href="https://web.facebook.com/LancerCommunity">LancerCommunity</a></blockquote></div>
 
+            </div>
+
+            @endif
         </div>
-
-        @endif
     </div>
-    <div class="card mt-4 pt-3 px-4 pb-2">
-        @if(Route::current()->getName() == 'posts.show')
-        @include('/posts/components/similar-companies')
-        @elseif(Route::current()->getName() == 'categories.show')
-        @include('/categories/components/more-categories')
-        @else
-        <div>
+    <div class="card mt-4 pt-3 px-1 pb-2">
+        <div class="col-12">
+            @if(Route::current()->getName() == 'posts.show')
+            @include('/posts/components/similar-companies')
+            @elseif(Route::current()->getName() == 'categories.show')
+            @include('/categories/components/more-categories')
+            @else
             <h4>Featured Companies</h4>
-
-            <?php $posts = \App\Models\Post::limit(10)->get() ?>
+            <?php $posts = \App\Models\Post::limit(5)->get() ?>
             @include('/posts/components/featured-posts')
-
-
-
+            @endif
         </div>
-        @endif
     </div>

@@ -8,7 +8,7 @@
 </div>
 <div class="col-md-3 border-left">
     <div class="d-flex flex-column">
-        <a href="{{ $post->company_url }}" target="_blank" class="btn main-btn btn-block"> Visit site <i class="ti-new-window ml-2"></i></a>
-        <a href="#reviews" class="pl-2 btn secondary-outline-btn btn-block">Go to reviews <i class="ti-comments-smiley ml-2"></i></a>
+        <a href="{{ $post->company_url }}" target="_blank" class="btn main-btn d-block mb-2"> Visit site <i class="ti-new-window ml-2"></i></a>
+        <a href="#reviews" class="pl-2 btn secondary-outline-btn d-block mb-2">Go to reviews <i class="ti-comments-smiley ml-2"></i></a>
     </div>
 </div>

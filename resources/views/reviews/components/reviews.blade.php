@@ -1,5 +1,5 @@
 <div class="col-12 card pb-3 pt-5 px-3" id="reviews">
-    <div class="row text-center text-md-left pt-5">
+    <div class="row text-center text-md-start pt-5">
         @if (isset($reviews_heading))
         <div class="col">
          <h2>{{ $reviews_heading }}</h2>
@@ -16,8 +16,8 @@
                     $image = $user->avatar ? $user->avatar : asset('images/default-user.png');
                 ?>
                 <a href="{{ url('profile/'.$user->slug) }}">
-                    <div class="bg-light rounded-circle" style="max-width: 90px;height: 90px">
-                        <img style="height: 100%;width:100%;" class="mx-auto rounded-circle" src="{{ $image }}" alt="{{ $post->company_name }} logo">
+                    <div class="bg-light rounded-circle mx-auto" style="max-width: 90px;height: 90px">
+                        <img style="height: 100%;width:100%;" class="mx-auto rounded-circle" src="{{ $image }}" alt="{{ $user->name }} logo">
                     </div>
                     <div class="text-center">
                         <span>{{ $user->name }}</span>

@@ -1,19 +1,19 @@
 @include('/templates/header')
-<div class="col">
+<div class="col-12">
     <div class="card mb-4 p-4">
         <div class="col">
             <div class="row">
                 @include('/posts/components/post-heading')
                 <div class="col-md-12 mt-3">
                     <div class="row">
-                    <div class="col-12">
-                        <h1 class="px-1">{{ $post->title }}</h1>
-                    </div>
-                    @include('/posts/components/authors-section')
+                        <div class="col-12">
+                            <h1 class="px-1">{{ $post->title }}</h1>
+                        </div>
+                        @include('/posts/components/authors-section')
                     </div>
                     <div class="row justify-content-start mt-4 p-1 bg-gray-50 rounded">
                         <div>
-                        {!! $post->content->content !!}
+                            {!! $post->content->content !!}
                         </div>
                     </div>
                     <hr>
@@ -28,11 +28,11 @@
                             @endif
                         </div>
                     </div>
-                </div> 
+                </div>
             </div>
         </div>
     </div>
+    <?php $reviews_heading = "User Reviews (" . $reviews->total() . ')'; ?>
+    @include('/reviews/components/reviews')
 </div>
-<?php $reviews_heading = "User Reviews (".$reviews->total().')'; ?>
-@include('/reviews/components/reviews')
 @include('/templates/footer')

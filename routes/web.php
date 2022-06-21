@@ -35,7 +35,9 @@ require __DIR__.'/auth.php';
 
 require  __DIR__.'/web/index.php';
 
-
+Route::get('/test', function() {
+    return view('welcome', ['title' => 'test', 'description' => 'test desc']);
+});
 
 //Fallback/Catchall Route
 Route::fallback(function (Request $request) {

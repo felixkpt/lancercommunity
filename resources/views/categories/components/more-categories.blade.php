@@ -13,17 +13,19 @@ if (isset($category->id)) {
 ?>
 @foreach ($categories as $item)
 <div class="d-flex flex-column align-items-start justify-content-between">
-    <div class="d-flex">
-        <div class="rounded">
-            <a href="{{ url('categories/'.$item->slug) }}">
-                <img class="rounded" style="width:100%;height:40px" src="{{ isset($item->image) ? $item->image : asset('images/default-category.png') }}" alt="">
+    <div class="row w-100">
+        <div class="pl-1 rounded col-4 col-md-12 col-xl-4 nx-auto overflow-hidden">
+            <a href="{{ url('categories/'.$item->slug) }}" class="block w-100">
+                <div style="width:80px;height:80px;">
+                    <img class="rounded w-100 h-100" style="object-fit:cover" src="{{ isset($item->image) ? $item->image : asset('images/default-category.png') }}" alt="">
+                </div>
             </a>
         </div>
-        <div class="pl-1"><a style="font-size: 16px" href="{{ url('categories/'.$item->slug) }}">{{ $item->name }}</a></div>
+        <div class="pl-1 col-8 col-md-12 col-xl-8 text-left text-xlg-center"><a style="font-size: 16px" href="{{ url('categories/'.$item->slug) }}">{{ $item->name }}</a></div>
     </div>
-    <div class="d-flex">
+    <div class="row my-2">
         <a class="text-dark" href="{{ url('categories/'.$item->slug) }}">
-            {{ Str::limit(strip_tags($item->description), 50) }}
+        {{ Str::limit(strip_tags($item->description), 50) }}
         </a>
     </div>
 </div>

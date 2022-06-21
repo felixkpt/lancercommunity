@@ -31,14 +31,14 @@
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#websiteTopNav" aria-controls="websiteTopNav" aria-expanded="true" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="navbar-collapse collapse" id="websiteTopNav" style="">
-            <ul class="navbar-nav ml-auto">
+    <div class="navbar-collapse collapse align-self-end" id="websiteTopNav">
+            <ul class="navbar-nav ms-auto">
                 <li class="nav-item mr-md-4 align-self-lg-center"><a href="{{ url('#coupons') }}" class="nav-link menu_items">Coupons</a></li>
                 <li class="nav-item mr-md-4 align-self-lg-center"><a href="{{ url('#for-business') }}" class="router-link-active router-link-exact-active nav-link menu_items" aria-current="page">For Business</a></li>
-                <li class="nav-item mb-2 mb-md-auto mr-md-4 align-self-lg-center"><a href="{{ url('write-a-review') }}" class="nav-link btn btn-block main-btn px-3 btn-important">Write a review</a></li>
+                <li class="nav-item mb-2 mb-md-auto me-md-2 align-self-lg-center"><a href="{{ url('write-a-review') }}" class="nav-link btn d-block main-btn px-3 btn-important">Write a review</a></li>
                 @if(!Auth::user())
-                <li class="nav-item mr-md-4 align-self-lg-center"><a href="{{ route('register') }}" class="nav-link btn btn-block secondary-outline-btn px-3 btn-important">Sign Up</a></li>
-                <li class="nav-item mr-md-4 align-self-lg-center"><a href="{{ route('login') }}" class="nav-link menu_items login"><small><i class="ti-user"></i></small> Login</a></li>
+                <li class="nav-item mb-2 mb-md-auto mr-md-4 me-md-2 align-self-lg-center"><a href="{{ route('register') }}" class="nav-link btn d-block secondary-outline-btn px-3 btn-important">Sign Up</a></li>
+                <li class="nav-item mr-md-4 align-self-lg-center"><a href="{{ route('login') }}" class="btn d-block text-danger px-3 btn-important"><small><i class="ti-user"></i></small> Login</a></li>
                 @else
 
                 <li class="nav-item dropdown mr-lg-4 align-self-lg-center">

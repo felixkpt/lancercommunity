@@ -1,7 +1,7 @@
 <?php 
     $items = $posts ?? $author->posts;
     foreach($items as $key =>  $post): ?>
-    <div class="row shadow-sm p-1 mt-2 text-center text-lg-left">
+    <div class="row shadow-sm p-1 mt-2 text-center text-lg-start">
         <div class="col-12 col-lg-3 overflow-hidden">
             <div class="d-flex justify-content-center">
                 <a href="{{ url('company/'.$post->slug) }}">
