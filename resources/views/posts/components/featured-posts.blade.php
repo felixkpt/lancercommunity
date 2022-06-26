@@ -5,7 +5,7 @@
             <div class="pl-1 rounded col-4 col-md-12 col-xl-4 nx-auto overflow-hidden">
                 <a href="{{ url('company/'.$item->slug) }}" class="block w-100">
                     <div style="width:80px;height:80px;">
-                        <img class="rounded w-100 h-100" style="object-fit:contain" src="{{ isset($item->image) ? $item->image : asset('images/default-company.png') }}" alt="">
+                        <img class="rounded w-100 h-100" src="{{ isset($item->image) ? $item->image : asset('images/default-company.png') }}" alt="">
                     </div>
                 </a>
             </div>
