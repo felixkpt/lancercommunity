@@ -34,7 +34,7 @@ return [
     'google' => [
         'client_id' => env('CLIENT_ID'), //USE FROM Google DEVELOPER ACCOUNT
         'client_secret' => env('CLIENT_SECRET'), //USE FROM Google DEVELOPER ACCOUNT
-        'redirect' => url('google/callback/')
+        'redirect' => env('URL').'google/callback/'
     ],
 
 ];
