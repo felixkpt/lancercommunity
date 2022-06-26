@@ -3,7 +3,7 @@
 </div>
 <hr>
 <?php 
-$limit = isset($cats_limit) ? $cats_limit : 10;
+$limit = isset($cats_limit) ? $cats_limit : 5;
 $categories = \App\Models\Category::where('id', '>', 0);
 if (isset($category->id)) {
     $categories = $categories->where('id', '!=', $category->id)->orderby('created_at', 'DESC')->limit($limit)->get();
