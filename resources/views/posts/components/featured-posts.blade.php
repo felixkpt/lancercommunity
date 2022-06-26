@@ -1,7 +1,13 @@
 <style>
     .thumb-image {
-        min-width:6.5rem;
-        height:5rem;
+        width: 6.5rem;
+        height: 5rem;
+    }
+
+    @media screen and (max-width: 576px) {
+        .thumb-image {
+            width: 100%;
+        }
     }
 </style>
 @foreach ($posts as $item)
