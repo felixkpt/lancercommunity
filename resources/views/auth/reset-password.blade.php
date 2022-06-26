@@ -1,8 +1,10 @@
 @include('/templates/header')
 <div class="col">
-    <div class="row justify-content-center px-2 py-4 ">
-        <div class="col-12 col-md-6 col-lg-4 bg-white shadow-md rounded-lg">
-            <div><h2 class="text-2xl text-left pb-3">Complete password reset</h2></div>
+    <div class="row justify-content-center p-3">
+        <div class="col-12 col-md-6 col-lg-5 bg-white shadow-md rounded m-4 py-3">
+            <div>
+                <h2 class="text-2xl text-left pb-3">Complete password reset</h2>
+            </div>
             @include('/components/notification')
 
             <form method="POST" action="{{ route('password.update') }}">
@@ -29,9 +31,7 @@
                 <div class="mt-4">
                     <x-label for="password_confirmation" :value="__('Confirm Password')" />
 
-                    <x-input id="password_confirmation" class="block mt-1 w-full"
-                                        type="password"
-                                        name="password_confirmation" required />
+                    <x-input id="password_confirmation" class="block mt-1 w-full" type="password" name="password_confirmation" required />
                 </div>
 
                 <div class="flex items-center justify-end mt-4">

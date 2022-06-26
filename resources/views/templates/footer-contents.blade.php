@@ -8,10 +8,11 @@
                 </div>
                 <div class="col-6 col-md-3">
                     <h5><b>Resources</b></h5>
-                    <p>
+                    <p class="d-flex flex-column">
                         <a href="{{ url('reviews') }}"><small><i class="ti-control-record mr-2"></i></small> Reviews </a>
-                        <br><a href="{{ url('pages/disclaimer') }}"><small><i class="ti-control-record mr-2"></i></small> Disclaimer </a>
-                        <br><a href="{{ url('pages/top-writing-services') }}"><small><i class="ti-control-record mr-2"></i></small> Top Writing Services </a><br>
+                        <a href="{{ url('pages/disclaimer') }}"><small><i class="ti-control-record mr-2"></i></small> Disclaimer </a>
+                        <a href="{{ url('pages/top-writing-services') }}"><small><i class="ti-control-record mr-2"></i></small> Top Writing Services </a>
+                        <a href="{{ url('pages/privacy-policy') }}"><small><i class="ti-control-record mr-2"></i></small> Privacy Policy </a>
                         <a href="{{ url('pages/terms-of-use') }}"><small><i class="ti-control-record mr-2"></i></small> Terms of Use </a>
                     </p>
                 </div>
@@ -38,17 +39,19 @@
     </section>
     <section class="copyright py-4">
         <div class="container">
-            <div class="row">
+            <div class="row justify-content-between">
                 <div class="col-md-6 my-3 my-md-0">
                     <p class="mb-0">© {{ date('Y') }} {{ \SiteInfo::name() }}. All Rights Reserved</p>
                 </div>
-                <div class="col-md-6 text-md-right my-3 my-md-0">
-                    <p class="mb-0">
-                        <a href="#" class="ml-md-4"><i class="ti-facebook"></i></a>
-                        <a href="#" class="ml-4"><i class="ti-twitter"></i></a>
-                        <a href="#" class="ml-4"><i class="ti-instagram"></i></a>
-                        <a href="#" class="ml-4"><i class="ti-linkedin"></i></a>
-                    </p>
+                <div class="col-md-6 text-md-right my-3 my-md-0 text-end">
+                    <div>
+                        <div class="d-flex gap-2 justify-content-end">
+                            <a href="#" class="ml-md-4"><i class="ti-facebook"></i></a>
+                            <a href="#" class="ml-4"><i class="ti-twitter"></i></a>
+                            <a href="#" class="ml-4"><i class="ti-instagram"></i></a>
+                            <a href="#" class="ml-4"><i class="ti-linkedin"></i></a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

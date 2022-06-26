@@ -26,6 +26,24 @@ class AuthenticatedSessionController extends Controller
         return view('auth.login', $data);
     }
 
+    function loginEmail(Request $request) {
+        $name = $request->get('email') ?? session()->get('email');
+        $user = User::where('email', '=', $name)->orWhere('slug', '=', $name)->first();
+        if (!$user) {
+            return redirect()->to('login')->with('danger', 'Username/Email not found.');
+        }
+        if ($user->google_id) {
+            return redirect()->to('login')->with('danger', 'Account is associated with google. Please login with google.');
+        }
+
+        $email = $user->email;
+        session()->put(['email' => $email]);
+        
+         $data = ['title' => 'Login with email', 'description' => 'Login in with your email', 'hide_sidebar' => true, 'hide_notification' => true, 'email' => $email];
+         return view('auth.login-email', $data);
+ 
+    }
+
     /**
      * Handle an incoming authentication request.
      *
@@ -35,10 +53,11 @@ class AuthenticatedSessionController extends Controller
     public function store(LoginRequest $request, MessageBag $message_bag)
     {
         if (User::where(['email' => $request->post('email'), 'is_active' => false])->first()) {
-            $message_bag->add('in_actsive', 'Account is not acitve');
+            $message_bag->add('in_active', 'Account is not acitve');
             return redirect()->back()->withErrors($message_bag);
         }
         $request->authenticate();
+        // dd($request->all());
 
         $request->session()->regenerate();
 

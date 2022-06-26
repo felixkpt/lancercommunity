@@ -1,4 +1,7 @@
                 </div>
+                @if (Route::current()->getName() == 'posts.show')
+                @include('/components/social-media-links-floating')
+                @endif
             </main>
             <!-- End main content -->
             @if(!isset($hide_sidebar) || !$hide_sidebar)

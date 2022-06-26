@@ -1,56 +1,54 @@
 @include('/templates/header')
 <div class="col">
-    <div class="row justify-content-center px-2 py-4 ">
-        <div class="col-12 col-md-6 col-lg-4 m-4 bg-white shadow-md rounded-lg">
+    <div class="row justify-content-center p-3">
+        <div class="col-12 col-md-6 col-lg-5 bg-white shadow-md rounded m-4 py-3">
             @include('/components/notification')
-            <div id="account-chooser" class="mx-auto">
-                <div><h2 class="text-2xl text-left pb-3">Account login</h2></div>
-                <div id="email-auth">
-                    <form method="POST" action="{{ route('login') }}">
-                        @csrf
-                        <!-- Email Address -->
-                        <div>
-                            <label class="block font-medium text-sm text-gray-700" for="email">
-                                Email
-                            </label>
-                            <input class="form-control" id="email" type="email" name="email" value="{{ old('email') }}" required="required" autofocus="autofocus">
+            <div class="row">
+                <div id="account-chooser" class="col-12 col-md-8 mx-auto">
+                    <div>
+                        <h2 class="text-center pb-3">Account login</h2>
+                    </div>
+                    <div id="email-auth">
+                        <form method="POST" action="{{ url('login/email') }}">
+                            @csrf
+                            <!-- Email Address -->
+                            <div class="mb-4">
+                                <input class="form-control" id="email" type="email" name="email" value="{{ old('email') }}" required="required" autofocus="autofocus" placeholder="Username or Email">
+                            </div>
+                            <div class="mb-5">
+                                <button type="submit" class="w-100 btn px-2 secondary-btn">
+                                    Login with Email
+                                </button>
+                            </div>
+                        </form>
+                        <div class="mb-5">
+                            <div class="h-divider">
+                                <div class="h-inner">
+                                    <span class="h-content">or</span>
+                                </div>
+                            </div>
                         </div>
-                        <!-- Password -->
-                        <div class="mt-4">
-                            <label class="block font-medium text-sm text-gray-700" for="password">
-                                Password
-                            </label>
-                            <input class="form-control" id="password" type="password" name="password" required="required" autocomplete="current-password">
+                        <div class="mb-5">
+                            <div class="w-100">
+                                <a href="{{ route('google.login') }}" type="button" class="btn px-2 btn-danger text-white w-100">
+                                    <svg style="width:auto;height:20px" aria-hidden="true" focusable="false" data-prefix="fab" data-icon="google" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 488 512">
+                                        <path fill="currentColor" d="M488 261.8C488 403.3 391.1 504 248 504 110.8 504 0 393.2 0 256S110.8 8 248 8c66.8 0 123 24.5 166.3 64.9l-67.5 64.9C258.5 52.6 94.3 116.6 94.3 256c0 86.5 69.1 156.6 153.7 156.6 98.2 0 135-70.4 140.8-106.9H248v-85.3h236.1c2.3 12.7 3.9 24.9 3.9 41.4z"></path>
+                                    </svg>
+                                    Login with Google
+                                </a>
+                            </div>
                         </div>
-                        <!-- Remember Me -->
-                        <div class="d-flex justify-content-between mt-4">
-                            <div class="">
-                                <label for="remember_me" class="inline-flex items-center">
-                                    <input id="remember_me" type="checkbox" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" name="remember">
-                                    <span class="ml-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
-                                </label>
+                        <div class="mb-5">
+                            <div class="h-divider">
+                                <div class="h-inner">
+                                    <span class="h-content">Don't have an account?</span>
+                                </div>
                             </div>
                         </div>
                         <div>
-                            <button type="submit" class="w-100 btn px-2 secondary-btn">
-                                Login with Email
-                            </button>
+                            <a href="{{ route('register') }}" class="w-100 btn d-block secondary-outline-btn px-3 btn-important">Sign up</a>
                         </div>
-                        <div class="d-flex items-center justify-center mt-4">
-                            @if (Route::has('password.request'))
-                                <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('password.request') }}">
-                                    {{ __('Forgot your password?') }}
-                                </a>
-                            @endif                        
-                        </div>
-                    </form>
-                </div>
-                <hr class="py-2 mt-4">
-                <div class="w-100">
-                    <a href="{{ route('google.login') }}" type="button" class="btn px-2 btn-danger text-white w-100">
-                        <svg style="width:auto;height:20px" aria-hidden="true" focusable="false" data-prefix="fab" data-icon="google" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 488 512"><path fill="currentColor" d="M488 261.8C488 403.3 391.1 504 248 504 110.8 504 0 393.2 0 256S110.8 8 248 8c66.8 0 123 24.5 166.3 64.9l-67.5 64.9C258.5 52.6 94.3 116.6 94.3 256c0 86.5 69.1 156.6 153.7 156.6 98.2 0 135-70.4 140.8-106.9H248v-85.3h236.1c2.3 12.7 3.9 24.9 3.9 41.4z"></path></svg>
-                        Login with Google
-                    </a>
+                    </div>
                 </div>
             </div>
         </div>

@@ -7,13 +7,14 @@
     <title>{{ $title }}</title>
     <meta name="description" content="{{ $description }}" />
     <link rel="icon" href="{{ url('favicon.ico') }}">
-    <link href="{{ asset('') }}css/style.css" rel="stylesheet">
-    <link href="{{ asset('') }}css/themify-icons/themify-icons.css" rel="stylesheet">
-    <link href="{{ asset('') }}css/app.bdb0a3d3.css" rel="preload" as="style">
-    <link href="{{ asset('') }}css/chunk-vendors.f8cd87c4.css" rel="preload" as="style">
-    <link href="{{ asset('') }}css/chunk-vendors.f8cd87c4.css" rel="stylesheet">
-    <link href="{{ asset('') }}css/app.bdb0a3d3.css" rel="stylesheet">
-    <script src="{{ asset('') }}js/bootstrap.min.js"></script>
+    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/themify-icons/themify-icons.css') }}" rel="stylesheet">
+    <link href="{{ asset('/fontawesome-free-6.1.1-web/css/all.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/app.bdb0a3d3.css') }}" rel="preload" as="style">
+    <link href="{{ asset('css/chunk-vendors.f8cd87c4.css') }}" rel="preload" as="style">
+    <link href="{{ asset('css/chunk-vendors.f8cd87c4.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/app.bdb0a3d3.css') }}" rel="stylesheet">
+    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('js/script.js?v=').Str::random(10) }}"></script>
     @if (Route::current()->getName() == 'posts.show')
     @include('/posts/components/schema')
@@ -31,3 +32,4 @@
         <div id="content-sidebar-wrapper" class="row">
             <main class="<?php if (isset($hide_sidebar) && $hide_sidebar) { echo 'col-12'; } else { echo 'col-md-9'; } ?>">
                 <div class="row <?php if (Route::current()->getName() !== 'home') { echo 'my-3'; } ?>">
+                
