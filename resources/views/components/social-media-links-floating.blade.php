@@ -5,10 +5,10 @@
     }
 
     #social-media-links-floating #wrapper {
-        position: absolute;
+        position: fixed;
         top: 40vh;
         left: 0;
-        margin: 0.6rem;
+        margin: 0.06rem;
         min-height: 70vh;
         width: 3rem;
         z-index: 2;
