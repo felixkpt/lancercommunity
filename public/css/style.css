@@ -314,3 +314,36 @@ a.current_dot {
     font-size: 1.2rem;
     padding: 0 10px;
 }
+
+.thumb-image-wrapper {
+    max-width: 12rem;
+    max-height: 8rem;
+    margin: auto;
+}
+
+@media screen and (max-width: 768px) {
+    .thumb-image-wrapper {
+        width: 100%;
+    }
+}
+
+
+.thumb-image-wrapper-sm {
+    width: 6.5rem;
+    height: 5rem;
+}
+
+@media screen and (max-width: 576px) {
+    .thumb-image-wrapper {
+        width: 100%;
+    }
+}
+
+.list-products {
+    transition: all ease .2s;
+}
+
+.list-products:hover {
+    transform: translateY(-0.5rem);
+    color: var(--bs-link-color);
+}

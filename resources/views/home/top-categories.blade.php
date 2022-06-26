@@ -8,7 +8,7 @@
         </div>
         <div class="row row-cols-1 row-cols-md-3 row-cols-lg-4 mt-md-4">
             @foreach($categories as $category)
-            <div class="col h-100 mb-1">
+            <div class="col h-100 p-2">
                 <div class="">
                     <a href="{{ url('categories/'.$category->slug) }}" class="text-dark">
                         <span class="list-products card px-3 py-4">
