@@ -7,7 +7,7 @@
     if ($categories) {
         $posts = \App\Models\Post::whereHas('categories', function ($q) use($categories, $post) { 
             $q->whereIn('post_category.category_id', array_column($categories, 'id'))->where('posts.id', '!=', $post->id);
-        })->limit(10)->get();
+        })->limit(5)->get();
         ?>
         @include('/posts/components/featured-posts')
         <?php 

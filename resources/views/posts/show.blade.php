@@ -13,7 +13,7 @@
                             @include('/posts/components/authors-section')
                         </div>
                         <div class="row justify-content-start mt-4 p-1 bg-gray-50 rounded">
-                            <div>
+                            <div class="col px-4">
                                 {!! $post->content->content !!}
                             </div>
                         </div>

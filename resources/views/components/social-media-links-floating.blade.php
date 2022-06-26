@@ -19,10 +19,15 @@
     }
 
     #social-media-links-floating #wrapper a {
-        transition: all ease-in-out .4s;
+        transition: transform ease-in-out .3s;
     }
 
     @media screen and (min-width: 769px) {
+        #social-media-links-floating #wrapper {
+            transform: translateX(-300px);
+            animation: slidetoview 1s ease 4s 1 normal forwards;
+        }
+
         #social-media-links-floating #wrapper a:hover {
             width: 3.4pc;
         }
@@ -30,7 +35,13 @@
         #social-media-links-floating #wrapper:hover #toggler {
             display: block;
         }
-
+        
+    }
+    
+    @keyframes slidetoview {
+        100% {
+            transform: translateX(0);
+        }
     }
 
     @media screen and (max-width: 768px) {
