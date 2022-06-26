@@ -1,10 +1,16 @@
+<style>
+    .thumb-image {
+        min-width:6.5rem;
+        height:5rem;
+    }
+</style>
 @foreach ($posts as $item)
 <div class="row flex-column align-items-start justify-content-between">
     <div class="col-12">
         <div class="row w-100">
             <div class="pl-1 rounded col-4 col-md-12 col-xl-4 nx-auto overflow-hidden">
                 <a href="{{ url('company/'.$item->slug) }}" class="block w-100">
-                    <div style="width:80px;height:80px;">
+                    <div class="thumb-image">
                         <img class="rounded w-100 h-100" src="{{ isset($item->image) ? $item->image : asset('images/default-company.png') }}" alt="">
                     </div>
                 </a>
