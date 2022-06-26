@@ -7,11 +7,11 @@ foreach ($items as $key =>  $post) : ?>
                 <div class="bg-light thumb-image-wrapper">
                     <?php $image = @getimagesize($post->image) ? $post->image : asset('images/default-company.png');
                     
-                    $image = asset('uploads/images/upwork.png');
-                    $image2 = asset('uploads/images/freelancer.png');
-                    $images = [$image, $image2];
-                    shuffle($images);
-                    $image = $images[0];
+                    // $image = asset('uploads/images/upwork.png');
+                    // $image2 = asset('uploads/images/freelancer.png');
+                    // $images = [$image, $image2];
+                    // shuffle($images);
+                    // $image = $images[0];
                     
                     ?>
                     <img style="width:100%;height:100%" class="mx-auto rounded-lg" src="{{ $image }}" alt="{{ $post->company_name }} logo">
