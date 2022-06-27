@@ -10,7 +10,7 @@
     });
     ?>
     @foreach($authors as $author)
-        <a class="text-muted pl-1" href="{{ url('authors/'.Str::slug($author['name'])) }}">
+        <a class="text-muted underline-none pl-1" href="{{ url('authors/'.Str::slug($author['name'])) }}">
             <div style="width: 36px;height:36px;" class="d-inline rounded-circle">
                 <img style="width: 36px;height:36px;" class="d-inline rounded-circle" src="{{ $author['avatar'] ?? asset('images/default-user.png') }}" alt="">
             </div>
