@@ -23,7 +23,7 @@
             @include('/categories/components/more-categories')
             @else
             <h4>Featured Companies</h4>
-            <?php $posts = \App\Models\Post::limit(5)->get() ?>
+            <?php $posts = \App\Models\Post::where([['post_type', '=', 'post'], ['published', '=', 'published']])->limit(5)->get() ?>
             @include('/posts/components/featured-posts')
             @endif
         </div>
