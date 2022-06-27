@@ -12,7 +12,6 @@ use Illuminate\Http\Request;
 
 class ReviewController extends Controller
 {
-
     protected $route = 'add-a-review';
     // setting maximums
     protected $max_title = 30;

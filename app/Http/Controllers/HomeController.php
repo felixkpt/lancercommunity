@@ -32,7 +32,7 @@ class HomeController extends Controller
 
         $categories = Category::latest()->limit(8)->get();
         $posts = Post::latest()->where('post_type', 'post')->where('published', 'published')->limit(5)->get();
-        $reviews = Review::latest()->limit(9)->get();
+        $reviews = Review::where('published', 'published')->latest()->limit(9)->get();
        
         $data = ['title' => $title, 'description' => $description, 'post' => $post, 'hide_sidebar' => true,
                     'categories' => $categories, 'posts' => $posts, 'reviews' => $reviews,];
