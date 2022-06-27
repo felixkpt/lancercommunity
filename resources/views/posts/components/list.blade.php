@@ -2,7 +2,7 @@
 $items = $posts ?? $author->posts;
 foreach ($items as $key =>  $post) : ?>
     <div class="row shadow-sm p-1 mt-2 text-center text-lg-start">
-        <div class="col-12 col-lg-3 overflow-hidden mx-auto">
+        <div class="col-12 col-lg-3 overflow-hidden mx-auto" style="min-height: 80px;">
             <a href="{{ url('company/'.$post->slug) }}">
                 <div class="bg-light thumb-image-wrapper">
                     <?php $image = @getimagesize($post->image) ? $post->image : asset('images/default-company.png');
