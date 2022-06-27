@@ -10,12 +10,12 @@
     });
     ?>
     @foreach($authors as $author)
-        <a class="link-green pl-1" href="{{ url('authors/'.Str::slug($author['name'])) }}">
+        <a class="text-muted pl-1" href="{{ url('authors/'.Str::slug($author['name'])) }}">
             <div style="width: 36px;height:36px;" class="d-inline rounded-circle">
                 <img style="width: 36px;height:36px;" class="d-inline rounded-circle" src="{{ $author['avatar'] ?? asset('images/default-user.png') }}" alt="">
             </div>
             {{ $author['name'] }}
         </a>@if(isset($authors[$loop->index+1])) @endif
     @endforeach
-    <span class="ml-2 pl-1 text-gray-400">{{ $post->created_at->diffForHumans() }}</span>
+    <span class="ml-2 pl-1 text-muted">{{ $post->created_at->diffForHumans() }}</span>
 </div>
