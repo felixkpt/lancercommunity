@@ -316,6 +316,7 @@ a.current_dot {
 }
 
 .thumb-image-wrapper {
+    height: 100%;
     max-width: 12rem;
     max-height: 8rem;
     margin: auto;
