@@ -12,8 +12,8 @@ if (isset($category->id)) {
 }
 ?>
 @foreach ($categories as $item)
-<div class="d-flex flex-column align-items-start justify-content-between">
-    <div class="row px-2">
+<div class="d-flex flex-column align-items-start justify-content-between px-1">
+    <div class="row">
         <div class="pl-1 rounded col-4 col-md-12 col-xl-4 nx-auto overflow-hidden">
             <a href="{{ url('categories/'.$item->slug) }}" class="block w-100">
                 <div style="width:80px;height:80px;">
