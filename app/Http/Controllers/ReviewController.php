@@ -14,6 +14,7 @@ class ReviewController extends Controller
 {
 
     protected $route = 'add-a-review';
+    // setting maximums
     protected $max_title = 30;
     protected $max_words = 500;
     public function writeReview($post_id)
