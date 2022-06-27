@@ -1,7 +1,8 @@
 <div class="col-md-2">
-    <div style="max-width: 150px;" class="mx-auto">
-        <img style="width:100%;max-height:150px" class="rounded-lg mx-auto" src="{{ isset($post->image) ? $post->image : asset('images/default-company.png') }}" alt="{{ $post->company_name }} logo" width="100%">
-    </div>
+    <div class="bg-light thumb-image-wrapper">
+                    <?php $image = @getimagesize($post->image) ? $post->image : asset('images/default-company.png'); ?>
+                    <img style="width:100%;height:100%" class="mx-auto rounded-lg" src="{{ $image }}" alt="{{ $post->company_name }} logo">
+                </div>
 </div>
 <div class="col-md-7">
     @include('/posts/components/post-stars')
