@@ -1,5 +1,5 @@
 @foreach ($posts as $item)
-<div class="row flex-column align-items-start justify-content-between">
+<div class="row flex-column align-items-start justify-content-between px-1">
     <div class="col-12">
         <div class="row w-100">
             <div class="pl-1 rounded col-4 col-sm-3 col-md-12 col-xl-4 nx-auto overflow-hidden">

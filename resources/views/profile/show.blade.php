@@ -1,6 +1,6 @@
 @include('/templates/header')
 <div class="col">
-    <div class="card">
+    <div class="card mb-4 p-1 p-lg-3">
         <h1 class="col">{{ $title }}</h1>
         @include('/profile/components/member-heading')
         <div class="col">
