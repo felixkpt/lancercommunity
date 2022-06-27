@@ -1,5 +1,4 @@
 <div class="flex flex-wrap w-full text-lg m-1 pl-1 border-l-2 border-gray-400 h-max">
-    <span>By</span> 
     <?php 
     $authors = json_decode(json_encode($post->mainAuthors), true);
     
@@ -16,7 +15,7 @@
                 <img style="width: 36px;height:36px;" class="d-inline rounded-circle" src="{{ $author['avatar'] ?? asset('images/default-user.png') }}" alt="">
             </div>
             {{ $author['name'] }}
-        </a>@if(isset($authors[$loop->index+1])),@endif
+        </a>@if(isset($authors[$loop->index+1])) @endif
     @endforeach
     <span class="ml-2 pl-1 text-gray-400">{{ $post->created_at->diffForHumans() }}</span>
 </div>

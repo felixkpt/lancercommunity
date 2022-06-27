@@ -14,7 +14,7 @@
                 </div>
 
                 <div class="col-md-5 mx-md-auto my-3">
-                    <a href="{{ url('authors/'.$user->slug) }}" class="nav-link btn secondary-outline-btn px-3 mt-3 mt-md-5 mb-3 mb-md-0">Companies reviewed by {{ $user->name }}</a>
+                    <a href="{{ url('authors/'.$user->slug) }}" class="nav-link btn secondary-outline-btn px-3 py-2 mt-3 mt-md-5 mb-3 mb-md-0">Companies reviewed by {{ $user->name }}</a>
                 </div>
 
             </div>

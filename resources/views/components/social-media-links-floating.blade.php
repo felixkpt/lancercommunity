@@ -23,9 +23,14 @@
     }
 
     @media screen and (min-width: 769px) {
-        #social-media-links-floating #wrapper {
+        .slidetoview-init {
             transform: translateX(-300px);
             animation: slidetoview 1s ease 4s 1 normal forwards;
+        }
+
+        .slidetoview {
+            transform: translateX(-300px);
+            animation: slidetoview 2s ease .01s 1 normal forwards;
         }
 
         #social-media-links-floating #wrapper a:hover {
@@ -35,12 +40,21 @@
         #social-media-links-floating #wrapper:hover #toggler {
             display: block;
         }
-        
+
+        .social-invisible {
+            animation: slideback 2s ease .01s 1 normal forwards;
+        }
     }
-    
+
     @keyframes slidetoview {
         100% {
             transform: translateX(0);
+        }
+    }
+
+    @keyframes slideback {
+        100% {
+            transform: translateX(-300px);
         }
     }
 
@@ -59,8 +73,8 @@
     }
 </style>
 <div id="social-media-links-floating" class="col-12">
-    <div id="wrapper">
-        <div id="share-content" class="d-flex flex-md-column gap-2 gap-md-0 justify-content-center">
+    <div id="wrapper" class="">
+        <div id="share-content" class="slidetoview-init d-flex flex-md-column gap-2 gap-md-0 justify-content-center">
             @include('/components/social-media-links')
         </div>
         <div id="toggler" class="text-end px-2">
@@ -72,7 +86,16 @@
     const target = document.querySelector('#social-media-links-floating #wrapper #share-content')
     const toggler = document.querySelector('#social-media-links-floating #wrapper #toggler')
     toggler.addEventListener('click', () => {
-        target.classList.toggle('invisible')
+        target.classList.remove('slidetoview-init')
+        if (target.classList.contains('social-invisible')) {
+            target.classList.add('slidetoview')
+            target.classList.remove('social-invisible')
+            
+        }else {
+            target.classList.add('social-invisible')
+            target.classList.remove('slidetoview')
+        }
+
         toggler.querySelector('span').classList.toggle('fa-chevron-right')
     })
 </script>
