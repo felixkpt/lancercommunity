@@ -1,13 +1,12 @@
 <?php 
 $nav_items = ['User Roles' => 'admin/users/roles', 'Posts' => 'admin/posts',]
 ?>
-<nav id="primary-nav" class="sticky top-0 z-50 bg-gray-800 py-2">
+<nav id="primary-nav" class="sticky top-0 z-[1010] bg-gray-800 py-2">
     <div class="px-2 mx-auto flex flex-wrap items-center justify-between">
                 <button data-collapse-toggle="left-nav-menu" aria-controls="left-nav-menu" aria-expanded="false" type="button" class="lg:hidden text-slate-500 hover:text-slate-600 dark:text-slate-400 dark:hover:text-slate-300">
             <span class="sr-only">Navigation</span>
             <svg width="24" height="24"><path d="M5 6h14M5 12h14M5 18h14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path></svg>
         </button>
-        
         <a href="{{ url('') }}" class="flex">
             <span class="self-center text-lg font-semibold whitespace-nowrap text-gray-300 md:text-gray-400 hover:text-gray-200">{{ \SiteInfo::name() }}</span>
         </a>
@@ -15,7 +14,6 @@ $nav_items = ['User Roles' => 'admin/users/roles', 'Posts' => 'admin/posts',]
             <span class="sr-only">Open main menu</span>
             <svg width="24" height="24"><path d="M5 6h14M5 12h14M5 18h14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path></svg>
         </button>
-        
         <div class="hidden md:block w-full md:w-auto" id="mobile-menu">
             <ul class="flex-col md:flex-row flex md:space-x-8 mt-4 md:mt-0 md:text-sm md:font-medium">
                 @foreach($nav_items as $label => $uri)

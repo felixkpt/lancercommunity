@@ -1,6 +1,9 @@
-<?php use Illuminate\Support\Facades\Route; ?>
+<?php
+
+use Illuminate\Support\Facades\Route; ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
@@ -18,8 +21,14 @@
     @if (Route::current()->getName() == 'posts.show')
     @include('/posts/components/schema')
     @endif
+    @if (isset($require_editor) && $require_editor)
+    <script src="{{ asset('admin/js/script.js?v=').Str::random(10) }}"></script>
+    <script src="{{ asset('js/jquery-3.4.1.slim.min.js') }}"></script>
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
+    <link href="{{ asset('summernote/styles.css') }}" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+    @endif
 </head>
-
 <body>
     @if ($_SERVER['HTTP_HOST'] != 'localhost')
     <div id="fb-root"></div>
@@ -27,8 +36,17 @@
     @endif
     @include('/templates/nav')
     <!-- Start sidenav + content -->
-    <div class="container-fluid mx-0 bg-light overflow-hidden <?php if (Route::current()->getName() == 'home') { echo 'p-0'; } else { echo 'p-1';} ?>">
+    <div class="container-fluid mx-0 bg-light overflow-hidden <?php if (Route::current()->getName() == 'home') {
+                                                                    echo 'p-0';
+                                                                } else {
+                                                                    echo 'p-1';
+                                                                } ?>">
         <div id="content-sidebar-wrapper" class="row">
-            <main class="<?php if (isset($hide_sidebar) && $hide_sidebar) { echo 'col-12'; } else { echo 'col-md-9'; } ?>">
-                <div class="row <?php if (Route::current()->getName() !== 'home') { echo 'my-3'; } ?>">
-                
+            <main class="<?php if (isset($hide_sidebar) && $hide_sidebar) {
+                                echo 'col-12';
+                            } else {
+                                echo 'col-md-9';
+                            } ?>">
+                <div class="row <?php if (Route::current()->getName() !== 'home') {
+                                    echo 'my-3';
+                                } ?>">

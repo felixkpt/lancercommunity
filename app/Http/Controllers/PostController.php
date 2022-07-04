@@ -155,7 +155,7 @@ class PostController extends Controller
     public function writePost() {
         $title = 'Write a review';
         $description = 'Review a freelancing company, Write a review post';
-        return view('posts/create', ['route' => $this->route.'.store', 'method' => 'post', 'title' => $title, 'description' => $description]);
+        return view('posts/create', ['route' => $this->route.'.store', 'method' => 'post', 'title' => $title, 'description' => $description, 'require_editor' => true]);
     }
 
     /**
@@ -166,7 +166,7 @@ class PostController extends Controller
         $title = 'Edit a review';
         $description = 'Edit existing review';
         
-        return view('posts/edit', ['route' => $this->route.'.update', 'method' => 'patch', 'post' => $post, 'title' => $title, 'description' => $description]);
+        return view('posts/edit', ['route' => $this->route.'.update', 'method' => 'patch', 'post' => $post, 'title' => $title, 'description' => $description, 'require_editor' => true]);
     }
 
     /**
