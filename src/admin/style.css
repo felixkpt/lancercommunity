@@ -19,9 +19,9 @@
 [multiple],
 textarea,
 select {
+    @apply border-gray-400;
     border-radius:5px;
     outline:none;
-    @apply border-gray-400
 }
 
 main {
@@ -32,6 +32,25 @@ footer {
     min-height:220px;
 }
 
+
+h1 {
+    @apply text-4xl my-4 rounded-sm font-medium text-gray-800;
+}
+h2 {
+    @apply text-3xl my-3 rounded-sm font-medium text-gray-700;
+}
+h3 {
+    @apply text-2xl my-2 rounded-sm font-medium text-gray-700;
+}
+h4 {
+    @apply text-xl my-1 rounded-sm font-medium text-gray-700;
+}
+h5 {
+    @apply text-lg my-1 rounded-sm font-medium text-gray-700;
+}
+h6 {
+    @apply text-base my-1 rounded-sm font-medium text-gray-700;
+}
 
 .img-fadein {
     @apply transition ease-in-out delay-150 duration-1000 hover:scale-125;
@@ -109,25 +128,6 @@ footer {
 
 .logout-button {
     @apply inline-block text-sm px-4 py-2 mt-4 md:mt-0 rounded border transition ease-in-out duration-700 bg-gray-100 border-white text-sky-400 hover:bg-gray-500 hover:text-white mt-4 md:mt-0
-}
-
-h1 {
-    @apply text-4xl my-4 rounded-sm font-medium text-gray-800;
-}
-h2 {
-    @apply text-3xl my-3 rounded-sm font-medium text-gray-700;
-}
-h3 {
-    @apply text-2xl my-2 rounded-sm font-medium text-gray-700;
-}
-h4 {
-    @apply text-xl my-1 rounded-sm font-medium text-gray-700;
-}
-h5 {
-    @apply text-lg my-1 rounded-sm font-medium text-gray-700;
-}
-h6 {
-    @apply text-base my-1 rounded-sm font-medium text-gray-700;
 }
 
 .busy {
