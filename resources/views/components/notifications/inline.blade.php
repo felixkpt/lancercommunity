@@ -1,29 +1,26 @@
-@if (session()->has('status'))
-<div class="m-1 bg-teal-200 border border-teal-500 text-gray-700 p-3 rounded relative" role="alert">
-    @include('/components/notifications/components/status')
+@if (session()->has('info'))
+<div class="alert alert-info" role="alert">
+    <strong class="font-bold">Status:</strong>
+    <span class="block sm:inline">{{ session('info') }}</span>
 </div>
 @endif
 @if (session()->has('success'))
-<div class="m-1 bg-[#31940a] border border-green-700 text-gray-100 p-3 rounded relative" role="alert">
-    @include('/components/notifications/components/success')
+<div id="toast-success" class="alert alert-success" role="alert">
+    <span class="block sm:inline">{{ session('success') }}</span>
+</div>
+@elseif (session()->has('warning'))
+<div id="toast-warning" class="alert alert-warning" role="alert">
+    <span class="block sm:inline">{{ session('warning') }}</span>
+</div>
+@elseif (session()->has('danger'))
+<div id="toast-danger" class="alert alert-danger" role="alert">
+    <span class="block sm:inline">{{ session('danger') }}</span>
 </div>
 @endif
-@if (session()->has('warning'))
-<div class="m-1 bg-yellow-300 border border-gray-500 text-gray-700 p-3 rounded relative" role="alert">
-    @include('/components/notifications/components/warning')
-</div>
-@endif
-
-@if (session()->has('danger'))
-<div class="m-1 bg-[#d93353] border border-gray-400 text-gray-100 p-3 rounded relative" role="alert">
-    @include('/components/notifications/components/danger')
-</div>
-@endif
-
 @if($errors->any())
 @foreach ($errors->all() as $error)
-<div class="m-1 bg-[#d93353] border border-gray-400 text-gray-100 p-3 rounded relative" role="alert">
-    @include('/components/notifications/components/danger')
+<div class="alert alert-danger" role="alert">
+    <span class="block sm:inline">{{ $error }}</span>
 </div>
 @endforeach
 @endif

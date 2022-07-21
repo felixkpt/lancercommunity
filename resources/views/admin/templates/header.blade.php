@@ -28,6 +28,7 @@
     <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
     @endif
 </head>
+
 <body class="bg-blue-50 dark" style="margin: 0;padding:0;" id="app">
     @include('/admin/templates/nav')
     <!-- Start sidenav + content -->
@@ -41,4 +42,10 @@
             <div class="flex flex-col justify-between">
                 <main class="flex flex-col overflow-x-hidden">
                     @include('/admin/templates/breadcrums')
-                    @include('/admin/components/notification')
+                    @if(!isset($notification_type) || $notification_type != 'none')
+                    @if(isset($notification_type) && $notification_type == 'inline')
+                    @include('/admin/components/notifications/inline')
+                    @else
+                    @include('/admin/components/notifications/toast')
+                    @endif
+                    @endif

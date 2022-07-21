@@ -1,4 +1,5 @@
 @include('/templates/header')
+
 <div class="col-12">
     @include('/home/home-slider')
     @include('/home/body')

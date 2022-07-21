@@ -5,7 +5,7 @@
             <div>
                 <h2 class="text-center pb-3">Forgot Password</h2>
             </div>
-            @include('/components/notification')
+            @include('/components/notifications/inline')
 
             <div class="col-12 col-lg-8 mx-auto">
                 <div>

@@ -65,7 +65,9 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view($this->route . '.create', ['route' => $this->route . '.index', 'method' => 'post', 'require_editor' => true]);
+        $data = ['route' => $this->route . '.index', 'method' => 'post', 'require_editor' => true];
+        $data['notification_type'] = 'inline';
+        return view($this->route . '.create', $data);
     }
 
     /** 
@@ -134,8 +136,9 @@ class PostController extends Controller
     public function edit($id)
     {
         $post = Post::where('post_type', $this->post_type)->where('id', $id)->first();
-        // dd($post->categories);
-        return view($this->route . '.edit', ['route' => $this->route . '.update', 'method' => 'patch', 'post' => $post, 'require_editor' => true]);
+        $data = ['route' => $this->route . '.update', 'method' => 'patch', 'post' => $post, 'require_editor' => true];
+        $data['notification_type'] = 'inline';
+        return view($this->route . '.edit', $data);
     }
 
     /**

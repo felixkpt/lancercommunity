@@ -1,5 +1,4 @@
 <?php
-
 $reviews_segments = [];
 $max_segments = 3;
 $per_segment = 3;

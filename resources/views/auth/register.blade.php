@@ -2,7 +2,7 @@
 <div class="col">
     <div class="row justify-content-center p-3">
         <div class="col-12 col-md-6 col-lg-5 bg-white shadow-md rounded m-4 py-3">
-            @include('/components/notification')
+            @include('/components/notifications/inline')
             <div class="row">
                 <div id="account-chooser" class="col-12 col-lg-8 mx-auto">
                     <div>
