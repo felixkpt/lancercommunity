@@ -10,9 +10,9 @@
             @foreach($categories as $category)
             <div class="col h-100 p-2">
                 <div class="">
-                    <a href="{{ url('categories/'.$category->slug) }}" class="text-dark">
-                        <span class="list-products card px-3 py-4">
-                            <p class="listing-icon"><img class="rounded" style="width:70px ;height:70px" src="{{ isset($category->image) ? $category->image : asset('images/default-category.png') }}" alt=""></p><h6>{{ $category->name }}</h6>
+                    <a href="{{ url('categories/'.$category->slug) }}" class="list-products card px-3 py-4 text-dark text-decoration-none">
+                        <span class="">
+                            <p class="listing-icon"><img class="rounded" style="width:70px ;height:70px" src="{{ $category->image ?? asset('images/default-category.png') }}" alt=""></p><h6 style="font-size: 105%">{{ $category->name }}</h6>
                         </span>
                     </a>
                 </div>
