@@ -1,5 +1,5 @@
 <div class="col-md-2">
-    <div class="bg-light company-logo">
+    <div class="bg-light thumb-image-wrapper-md">
                     <?php $image = @getimagesize($post->image) ? $post->image : asset('images/default-company.png'); ?>
                     <img style="width:100%;height:100%" class="mx-auto rounded-lg" src="{{ $image }}" alt="{{ $post->company_name }} logo">
                 </div>

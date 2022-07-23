@@ -4,7 +4,7 @@
         <div class="col-md-3 overflow-hidden">
             <div class="d-flex justify-content-center">
                 <a href="{{ url('company/'.$post->slug) }}">
-                <div class="bg-light company-logo">
+                <div class="bg-light thumb-image-wrapper-md">
                     <?php 
                     $image = isset($post->image) ? $post->image : asset('images/default-company.png');
                      ?>

@@ -7,8 +7,8 @@
             @else
             <div>
                 <h4>Follow us on social media</h4>
-                <div class="fb-page" data-href="https://web.facebook.com/LancerCommunity" data-tabs="timeline" data-width="" data-height="" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true">
-                    <blockquote cite="https://web.facebook.com/LancerCommunity" class="fb-xfbml-parse-ignore"><a href="https://web.facebook.com/LancerCommunity">LancerCommunity</a></blockquote>
+                <div class="fb-page" data-href="https://web.facebook.com/TheLancerCommunity" data-tabs="timeline" data-width="" data-height="" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true">
+                    <blockquote cite="https://web.facebook.com/TheLancerCommunity" class="fb-xfbml-parse-ignore"><a href="https://web.facebook.com/TheLancerCommunity">LancerCommunity</a></blockquote>
                 </div>
 
             </div>
