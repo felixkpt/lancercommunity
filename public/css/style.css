@@ -325,6 +325,9 @@ a.current_dot {
     max-height: 8rem;
     margin: auto;
 }
+.thumb-image-wrapper img {
+    background-color: #00304921;
+}
 
 @media screen and (max-width: 768px) {
     .thumb-image-wrapper {
