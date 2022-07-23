@@ -5,16 +5,10 @@ foreach ($items as $key =>  $post) : ?>
         <div class="col-12 col-lg-3 overflow-hidden mx-auto" style="min-height: 80px;">
             <a href="{{ url('company/'.$post->slug) }}">
                 <div class="bg-light thumb-image-wrapper">
-                    <?php $image = @getimagesize($post->image) ? $post->image : asset('images/default-company.png');
-                    
-                    // $image = asset('uploads/images/upwork.png');
-                    // $image2 = asset('uploads/images/freelancer.png');
-                    // $images = [$image, $image2];
-                    // shuffle($images);
-                    // $image = $images[0];
-                    
+                    <?php 
+                    $image = $post->image ?? asset('images/default-company.png');
                     ?>
-                    <img style="width:100%;height:100%" class="mx-auto rounded-lg" src="{{ $image }}" alt="{{ $post->company_name }} logo">
+                    <img class="h-100 w-100" src="{{ $image }}" alt="{{ $post->company_name }} logo">
                 </div>
             </a>
         </div>
