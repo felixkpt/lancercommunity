@@ -23,11 +23,6 @@ if (isset($category->id)) {
         </div>
         <div class="pl-1 col-8 col-md-12 col-xl-7 text-left text-xlg-center"><a style="font-size: 16px" href="{{ url('categories/'.$item->slug) }}">{{ $item->name }}</a></div>
     </div>
-    <div class="row my-2">
-        <a class="text-dark" href="{{ url('categories/'.$item->slug) }}">
-            {{ Str::limit(strip_tags($item->description), 50) }}
-        </a>
-    </div>
 </div>
 <hr>
 @endforeach
