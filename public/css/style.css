@@ -369,3 +369,16 @@ a.current_dot {
 .list-products:hover::after {
     transform:  scaleX(1);
 }
+
+.company-logo {
+    width: 150px;
+    height:140px;
+    border-radius: 4px;
+    overflow: hidden;
+    margin: auto;
+}
+
+.company-logo img { 
+    background-color: #00304921;
+    border-radius: 4px;
+}
